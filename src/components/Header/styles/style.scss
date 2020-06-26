@@ -1,0 +1,51 @@
+@import './app/style/variables';
+
+.header {
+  background: white;
+  border-bottom: 1px solid #c2c2c2;
+}
+.navbrand {
+  padding-bottom: 15px;
+}
+
+.navlink {
+  padding-bottom: 15px;
+  position: relative;
+
+  &::after{
+    position: absolute;
+    width: 100%;
+    content: ' ';
+    height: 4px;
+    background: $primary;
+    left: 0;
+    bottom: 0;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:hover, &.active {
+    &::after{
+      transform: scaleY(1);
+    }
+  }
+
+
+}
+
+.navtext {
+  padding-bottom: 15px;
+}
+
+.navbar {
+ padding: 0;
+ height: 70px;
+ align-items: flex-end;
+}
+
+.navspace {
+  div {
+    margin-left: 2em;
+  }
+}

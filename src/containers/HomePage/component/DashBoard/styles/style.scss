@@ -1,0 +1,55 @@
+.dashboardheading {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5em 0em 0.5em;
+  align-items: flex-end;
+
+  h2 {
+    font-size: 22px;
+    font-weight: 400;
+    color: #666666;
+    flex: 1;
+    margin-bottom: 0;
+  }
+}
+
+.currentmonth {
+  font-size: 16px;
+  color: #666;
+}
+.dashboardMoney{
+  display:flex;
+  align-items: flex-start;
+}
+.dollarsign{
+  font-size: 24px;
+  color: #999;
+  margin-top: 0.2em;
+  margin-right: 0.25em;
+}
+.generalMoney{
+  font-size: 36px;
+  color: #666;
+  font-weight: 300;
+}
+.pending{
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5em 0em 0.5em;
+  align-items: flex-end;
+}
+.pendingheader{
+  color: #666;
+  flex:1;
+}
+.pendingMoney{
+  color: #666;
+}
+.chart {
+  padding-top: 0.5em;
+}
+.chartheader {
+  font-size: 16px;
+  color: #666;
+}
+

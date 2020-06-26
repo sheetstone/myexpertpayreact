@@ -1,0 +1,199 @@
+@import './app/style/variables';
+
+.calendar {
+  margin: 20px 0;
+
+}
+
+.header {
+  display: flex;
+  padding: 1em 0.5em 0.5em;
+  border-bottom: 2px solid rgba(39, 155, 139, 0.65);
+  align-content: center;
+}
+
+.arrowIconBtn {
+  flex-grow: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+
+  svg {
+    flex-grow: 1;
+  }
+
+  &:hover {
+    background: rgba(#ccc, 0.3);
+  }
+}
+
+.monthLabel {
+  flex-grow: 1;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.375rem;
+  user-select: none;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.headerweek {
+  display: flex;
+  border-bottom: 1px dashed #ccc;
+  border-left: 1px dashed #ccc;
+  border-right: 1px dashed #ccc;
+}
+
+.week {
+  border-left: 1px dashed #ccc;
+  display: flex;
+}
+
+.headerday {
+  width: 120px;
+  text-align: center;
+  font-weight: bold;
+  flex-grow: 1;
+  padding: .65rem 0.75rem;
+  color: #333;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.day {
+  width: 120px;
+  height: 100px;
+  flex-grow: 1;
+  border-right: 1px dashed rgba(#ccc, 0.5);
+  border-bottom: 1px dashed #ccc;
+  position: relative;
+}
+
+.dayNum {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.8rem;
+  user-select: none;
+}
+
+.eventslist {
+  position: absolute;
+  width: 100%;
+  top: 2.4em;
+  left: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.eventsli {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.8em;
+  padding: 0.1em 0.5em 0.1em;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover{
+    background: rgba($secondary, 0.6);
+    color: white;
+  }
+
+  span {
+    margin-left: 0.3em;
+    user-select: none;
+  }
+}
+
+.differentMonth {
+  color: #c2c2c2;
+}
+
+.today {
+  // background: $primary;
+  //color: $primary;
+  //font-weight: bold;
+
+  .dayNum {
+    color: white;
+    display: block;
+    background: $primary;
+    border-radius: 100%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    top: 0.5rem;
+    right: 0.4rem;
+  }
+
+}
+
+.selected {
+  background: $primary;
+  color: white;
+
+  &:hover {
+    background: $primary;
+    color: white;
+  }
+
+  &.today .dayNum {
+    color: $primary;
+    background: white;
+  }
+}
+
+.eventDetail{
+  position: absolute;
+  top:0px;
+  left:0px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 390px;
+  box-shadow: 0px 0px 8px #c2c2c2;
+  padding: 1rem;
+}
+.eventHeader{
+  @extend .eventRow;
+
+  font-size: 22px;
+  font-weight: 300;
+}
+.eventRow{
+  display: flex;
+  padding: 0.85rem 0.2rem;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+
+  &:last-of-type {
+    border-bottom: 0 none;
+  }
+}
+.leftcol {
+  width:40px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  text-align: center;
+}
+.rightcol{
+  flex-grow: 1;
+}
+.eventsInviter{
+  color: #333;
+}
+.invitmeg{
+  color: #999;
+  font-size: 0.9em;
+}
+.eventlasting{
+  color: #999;
+  font-size: 0.9em;
+}

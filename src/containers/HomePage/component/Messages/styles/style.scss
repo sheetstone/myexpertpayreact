@@ -1,0 +1,29 @@
+.messageContainer {
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+
+.messageTable {
+  thead th {
+    border-top: none 0;
+    border-bottom: 2px solid rgba(39, 155, 139, .65);
+  }
+  td {
+    border-top: 0 none;
+    border-bottom: 1px dashed #bcbcbc;
+    vertical-align: middle;
+  }
+  button {
+    margin-right:1em;
+    color: white;
+  }
+}
+.price{
+  font-size: 1.25em;
+  font-weight: 300;
+  text-align: right;
+}
+.priceNumber{
+  display: inline-block;
+  margin-left: 0.25em;
+}

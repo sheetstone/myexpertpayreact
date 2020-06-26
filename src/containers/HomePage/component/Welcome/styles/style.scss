@@ -1,0 +1,19 @@
+@import './app/style/variables';
+
+.dashboardheader {
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.dashboardtitle {
+  font-weight: 300;
+}
+
+.dashboardinfo {
+  font-weight: 300;
+  color:$text-grey;
+
+  span{
+    margin-right: 0.5em;
+  }
+}

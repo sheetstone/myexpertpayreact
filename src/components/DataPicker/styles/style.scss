@@ -1,0 +1,58 @@
+@import './app/style/variables';
+
+.calendarGroup{
+  position: relative;
+}
+.bringUp {
+  z-index: 20;
+}
+.calendarGroup{
+  border: 1px solid #339999;
+  padding: 0.5em 0.4em 0.3em 0.4em;
+  border-radius: 0px;
+  width: 165px;
+  float: left;
+  overflow: show;
+
+  &:focus-within {
+    //background-color: #339999;
+  }
+  &:nth-of-type(1){
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  &:nth-of-type(2){
+    border-left: 0 none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}
+.calendarlabel{
+  font-size: 13px;
+  color:#333;
+  display: block;
+  margin-bottom: 0;
+}
+
+.datapickerinput{
+  border: 0px none;
+  font-size: 16px;
+  color: #666;
+  background: transparent;
+
+  &:focus{
+    outline: none;
+  }
+}
+.show {
+  display: block;
+}
+.calendar {
+  position: absolute;
+  top:55px;
+  left:-1px;
+  max-width: unset;
+}
+.hide {
+  display: none;
+}

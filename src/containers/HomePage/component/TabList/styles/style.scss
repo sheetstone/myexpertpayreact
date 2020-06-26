@@ -1,0 +1,19 @@
+.tabList {
+  transform: translateY(1px);
+}
+
+.tabItem {
+  margin-right: 1em;
+}
+
+.tabLink {
+  color: #777777;
+  svg {
+    margin-right: 0.5em;
+  }
+}
+
+.tabContent{
+  background: white;
+  border-top: 1px solid #cccccc;
+}

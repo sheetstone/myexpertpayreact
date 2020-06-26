@@ -1,0 +1,37 @@
+// Grid system;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 361px,
+  md: 711px,
+  lg: 921px,
+  xl: 1201px
+);
+
+$container-max-widths: (
+  sm: 710px,
+  md: 860px,
+  lg: 920px,
+  xl: 1200px
+);
+
+$body-color:      #666666;
+$h1-font-size:      20px;
+$headings-color:  #666666;
+
+
+// Color system
+$body-bg:       #ffffff;
+$primary:       #31A590;
+$secondary:     #B95B8A;
+$warning:       #FFCC99;
+
+$text-grey:     #666666;
+
+$nav-tabs-border-color:  #cccccc;
+$nav-tabs-link-hover-border-color: $nav-tabs-border-color;
+$nav-tabs-link-active-bg:           $body-bg ;
+$nav-tabs-link-active-border-color: $nav-tabs-border-color $nav-tabs-border-color $nav-tabs-link-active-bg;
+
+// Font 
+@import 'font.scss';
+$primary-font: 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
