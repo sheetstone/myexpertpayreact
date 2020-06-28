@@ -1,0 +1,36 @@
+@import '../../../globalStyle/variables';
+
+.Navbrand {
+    padding-bottom: 15px;
+}
+
+.Navlink {
+    padding-bottom: 15px;
+    position: relative;
+
+    &::after {
+        position: absolute;
+        width: 100%;
+        content: ' ';
+        height: 4px;
+        background: $primary;
+        left: 0;
+        bottom: 0;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    &:hover,
+    &.active {
+        &::after {
+            transform: scaleY(1);
+        }
+    }
+}
+
+.Navspace {
+    div {
+        margin-left: 2em;
+    }
+}

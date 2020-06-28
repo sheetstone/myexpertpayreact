@@ -15,8 +15,8 @@ import HomePage from './HomePage/Homepage';
 //import CaseInfo from 'containers/CaseInfo/Loadable';
 //import Payment from 'containers/Payment/Loadable';
 //import NotFoundPage from 'containers/NotFoundPage/Loadable';
-//import Header from '../../components/Header';
-//import Footer from '../../components/Footer';
+import Header from '../components/UI/Header/Header';
+import Footer from '../components/UI/Footer/Footer';
 
 export default function App() {
   return (
@@ -24,16 +24,17 @@ export default function App() {
       <Helmet titleTemplate="%s - MyExpertPay" defaultTitle="MyExpertPay">
         <meta name="description" content="My ExpertPay" />
       </Helmet>
-      <HomePage />
-      {/*<Header />
+      <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/bankaccount" component={BankAccount} />
+        {/*<Route path="/bankaccount" component={BankAccount} />
         <Route path="/caseinfo" component={CaseInfo} />
         <Route path="/payment" component={Payment} />
         <Route path="/" component={NotFoundPage} />
+        <Footer />
+        */}
       </Switch>
-      <Footer />*/}
+      <Footer />
     </>
   );
 }

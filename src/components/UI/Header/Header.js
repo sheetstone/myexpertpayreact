@@ -1,21 +1,21 @@
 import React from 'react';
 import { Container, Navbar } from 'react-bootstrap';
 
-import NavList from './NavList';
-import NavLogo from './NavLogo';
+import NavList from '../Nav/NavList';
+import NavLogo from '../Nav/NavLogo';
 
-import style from './styles/style.scss';
+import classes from './Header.module.scss';
 
-function Header() {
+const Header = (props) => {
   return (
-    <header className={style.header}>
+    <header className={classes.Header}>
       <Container>
-        <Navbar className={style.navbar}>
+        <Navbar className={classes.Navbar}>
           <NavLogo />
           <NavList />
 
           <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text className={style.navtext}>
+            <Navbar.Text className={classes.Navtext}>
               WELCOME: <a href="#logout">John Joe</a>
             </Navbar.Text>
           </Navbar.Collapse>

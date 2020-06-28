@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MyExpertPay",
+  "name": "Manage you wallet and pay obligor without hassel",
   "icons": [
     {
       "src": "favicon.ico",

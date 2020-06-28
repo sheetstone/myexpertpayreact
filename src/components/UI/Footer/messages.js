@@ -18,4 +18,15 @@ export default defineMessages({
       Made with love by {author}.
     `,
   },
+  contactInfoTel: {
+    id: `${scope}.contactInfo.tel`,
+    defaultMessage: '512-775-2142'
+  },
+  contactInfoEmail:{
+    id: `${scope}.contactInfo.email`,
+    defaultMessage: 'sheetstone@gmail.com'
+  }
 });
+
+
+

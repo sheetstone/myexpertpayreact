@@ -20,13 +20,14 @@ export default function HomePage() {
         <meta name="description" content="My ExpertPay homepage dashboard" />
       </Helmet>
 
-      <h1>Home page</h1>
-      {/*<Container>
-        <Welcome />
+      
+      <Container>
+        <h1>Home page</h1>
+        {/*<Welcome />*/}
       </Container>
 
 
-      <TabList />*/}
+      {/*<TabList />*/}
     </article>
   );
 }
