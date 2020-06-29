@@ -1,6 +1,5 @@
 import React from 'react';
 import formatMoney from 'utils/formatMoney';
-import { getPayments } from 'api/paymentApi';
 
 import RecieveChart from './RecieveChart';
 import ChartTypeDropDown from './ChartTypeDropDown';
@@ -19,13 +18,6 @@ const context = [[
 ]];
 
 
-const statusDict = [
-  'money recieved',
-  'money sent',
-  'request sent but not recived money',
-  'request sent but not paid',
-];
-
 class DashBoard extends React.Component {
   constructor(props) {
     super(props);
@@ -36,8 +28,6 @@ class DashBoard extends React.Component {
   }
 
   handleChartDropdown(ctype) {
-    // console.log('dropdownchanged:' + ctype);
-
     this.setState({ chartType: parseInt(ctype) });
   }
 
