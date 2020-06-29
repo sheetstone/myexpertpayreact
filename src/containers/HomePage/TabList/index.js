@@ -39,7 +39,7 @@ function TabList() {
 
       <Tab.Content
         className={classes.tabContent}
-        classes={{ minHeight: getMinHeight() }}
+        style={{ minHeight: getMinHeight() }}
       >
         <Tab.Pane eventKey="accountsummary">
           <AccountSummary />

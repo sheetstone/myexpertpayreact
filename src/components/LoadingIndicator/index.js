@@ -13,7 +13,7 @@ const Brick = (props) => {
 }
 
 const LoadingIndicator = () => (
-  <div class={classes.Wrapper}>
+  <div className={classes.Wrapper}>
     <Brick color={COLOR.PRIMARY} bricknum="1"/>
     <Brick color={COLOR.SECONDARY} bricknum="2"/>
     <Brick color={COLOR.WARNING} bricknum="3"/>

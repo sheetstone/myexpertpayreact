@@ -9,8 +9,8 @@ import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 
 import classes from './Homepage.module.scss';
-import Welcome from './Welcome/welcome';
-import TabList from './TabList/tabList';
+import Welcome from './Welcome'
+import TabList from './TabList';
 
 export default function HomePage() {
   return (
