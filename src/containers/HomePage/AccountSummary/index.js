@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import LoadingIndicator from 'components/LoadingIndicator';
+import LoadingIndicator from 'components/LoadingIndicator/LoadingIndicator.js';
 
-import { getPayments } from 'api/paymentApi';
+// import { getPayments } from 'api/paymentApi';
 
-import DashBoard from '../DashBoard';
+// import DashBoard from '../DashBoard';
 
 import style from './styles/style.scss';
 
@@ -19,12 +19,12 @@ class AccountSummary extends React.Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    getPayments().then(data =>
+    /*getPayments().then(data =>
       this.setState({
         paymentData: data,
         isLoading: false,
       }),
-    );
+    );*/
   }
 
   render() {
@@ -37,10 +37,10 @@ class AccountSummary extends React.Component {
       <Container className={style.accountcontainer}>
         <Row>
           <Col>
-            <DashBoard type="recieved" paymentData={paymentData} />
+            {/*<DashBoard type="recieved" paymentData={paymentData} />*/}
           </Col>
           <Col>
-            <DashBoard type="sent" paymentData={paymentData} />
+            {/*<DashBoard type="sent" paymentData={paymentData} />*/}
           </Col>
         </Row>
       </Container>

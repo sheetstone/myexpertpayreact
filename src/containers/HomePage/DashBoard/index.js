@@ -2,8 +2,8 @@ import React from 'react';
 import formatMoney from 'utils/formatMoney';
 import { getPayments } from 'api/paymentApi';
 
-import RecieveChart from '../DashBoard/RecieveChart';
-import ChartTypeDropDown from '../DashBoard/ChartTypeDropDown';
+import RecieveChart from './RecieveChart';
+import ChartTypeDropDown from './ChartTypeDropDown';
 
 import style from './styles/style.scss';
 
@@ -42,6 +42,8 @@ class DashBoard extends React.Component {
   }
 
   updateDashboardType() {
+    const { type } = this.props;
+    
     if (type === 'recieved') {
       this.setState({ dashboardtype: 0 });
     }

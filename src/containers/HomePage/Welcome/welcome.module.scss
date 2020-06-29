@@ -1,15 +1,15 @@
-@import './app/style/variables';
+@import '../../../globalStyle/variables';
 
-.dashboardheader {
+.Header {
   padding-top: 1rem;
   padding-bottom: 1.5rem;
 }
 
-.dashboardtitle {
+.Title {
   font-weight: 300;
 }
 
-.dashboardinfo {
+.Info {
   font-weight: 300;
   color:$text-grey;
 

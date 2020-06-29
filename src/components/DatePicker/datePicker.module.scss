@@ -1,4 +1,4 @@
-@import './app/style/variables';
+@import '../../globalStyle/variables';
 
 .calendarGroup{
   position: relative;
@@ -15,7 +15,6 @@
   overflow: show;
 
   &:focus-within {
-    //background-color: #339999;
   }
   &:nth-of-type(1){
     border-top-left-radius: 5px;

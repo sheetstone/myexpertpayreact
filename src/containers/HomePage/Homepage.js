@@ -9,10 +9,8 @@ import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 
 import classes from './Homepage.module.scss';
-//import Welcome from './component/Welcome';
-//import TabList from './component/TabList';
-
-import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator';
+import Welcome from './Welcome/welcome';
+import TabList from './TabList/tabList';
 
 export default function HomePage() {
   return (
@@ -22,15 +20,11 @@ export default function HomePage() {
         <meta name="description" content="My ExpertPay homepage dashboard" />
       </Helmet>
 
-      
       <Container>
-        <h1>Home page</h1>
-        <LoadingIndicator />
-        {/*<Welcome />*/}
+        <Welcome />
       </Container>
 
-
-      {/*<TabList />*/}
+      <TabList />
     </article>
   );
 }
