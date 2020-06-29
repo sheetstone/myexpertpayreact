@@ -12,6 +12,8 @@ import classes from './Homepage.module.scss';
 //import Welcome from './component/Welcome';
 //import TabList from './component/TabList';
 
+import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator';
+
 export default function HomePage() {
   return (
     <article className={classes.Background}>
@@ -23,6 +25,7 @@ export default function HomePage() {
       
       <Container>
         <h1>Home page</h1>
+        <LoadingIndicator />
         {/*<Welcome />*/}
       </Container>
 

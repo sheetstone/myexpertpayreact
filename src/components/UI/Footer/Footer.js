@@ -4,12 +4,12 @@ import { FormattedMessage } from 'react-intl';
 import { Container, Row } from 'react-bootstrap';
 
 import messages from './messages';
-import style from './Footer.module.scss';
+import classes from './Footer.module.scss';
 
 
 function Footer() {
   return (
-    <footer className={style.footer}>
+    <footer className={classes.footer}>
       <Container>
         <Row className="justify-content-between">
           <section>

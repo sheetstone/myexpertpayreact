@@ -1,0 +1,39 @@
+{
+  "myexpertpay.components.Footer.author.message": "Hecho con amor por {author}.",
+  "myexpertpay.components.Footer.license.message": "Ⓒ2020 Sheetstone Technology Solutions",
+  "myexpertpay.components.Header.features": "Caracteristicas",
+  "myexpertpay.components.Header.home": "Hogar",
+
+  "myexpertpay.components.nav.bankAccount": "Cuenta bancaria",
+  "myexpertpay.components.nav.caseInfo": "Información del caso",
+  "myexpertpay.components.nav.recipients": "Destinatarios",
+  "myexpertpay.components.nav.payment": "Pago",
+  "myexpertpay.components.nav.logo": "Mi logo de Expertpay",
+
+  "myexpertpay.containers.BankAccount.header": "Bank Account",
+  "myexpertpay.containers.BankAccount.scaffoldingHeader": "Below is a list of your bank accounts. To edit/delete an account, click on the account row and select from the dropdown menu. To validate an account not yet verified please click on the account row and select \"Verify\" from the dropdown menu. To add a new bank account, select \"New Bank Account.\"",
+  "myexpertpay.containers.BankAccount.addBankTitle": "Add Bank Account",
+  "myexpertpay.containers.BankAccount.addBankSubmit": "Confirm & Complete",
+  "myexpertpay.containers.BankAccount.addBankMessage": "By add bank account, you accept the General Condition & Confidentiality Rules",
+  "myexpertpay.containers.BankAccount.accountNumber": "Account Number",
+  "myexpertpay.containers.BankAccount.accountNumberConfirmation": "Confirm Account",
+  "myexpertpay.containers.BankAccount.rountingNumber": "Bank Routing Number",
+
+  "myexpertpay.containers.Payment.header": "Payment Activities",
+  "myexpertpay.containers.Payment.sendBtn": "Send Money",
+  "myexpertpay.containers.Payment.requestBtn": "Request Money",
+  "myexpertpay.containers.Payment.addBankSubmit": "Confirm & Complete",
+  "myexpertpay.containers.Payment.addBankMessage": "By add bank account, you accept the General Condition & Confidentiality Rules",
+  "myexpertpay.containers.Payment.accountNumber": "Account Number",
+  "myexpertpay.containers.Payment.accountNumberConfirmation": "Confirm Account",
+  "myexpertpay.containers.Payment.rountingNumber": "Bank Routing Number",
+
+  "myexpertpay.containers.HomePage.start_project.header": "Start your next react project in seconds",
+  "myexpertpay.containers.HomePage.start_project.message": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "myexpertpay.containers.HomePage.tryme.atPrefix": "@",
+  "myexpertpay.containers.HomePage.tryme.header": "Try me!",
+  "myexpertpay.containers.HomePage.tryme.message": "Show Github repositories by",
+  "myexpertpay.containers.LocaleToggle.de": "de",
+  "myexpertpay.containers.LocaleToggle.en": "en",
+  "myexpertpay.containers.NotFoundPage.header": "Page not found."
+}

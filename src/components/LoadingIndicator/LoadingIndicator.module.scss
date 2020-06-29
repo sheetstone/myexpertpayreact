@@ -1,0 +1,54 @@
+.Wrapper{
+    margin: 2em auto;
+    width: 45px;
+    height: 45px;
+    position: relative;
+}
+
+@keyframes circleFade {
+    0% { 
+        transform: translate(0, 0);
+    }
+
+    25% { 
+        transform: translate(25px, 0);
+    }
+
+    50% {
+        transform: translate(25px, 25px);
+    }
+
+    75% {
+        transform: translate(0px, 25px);
+    }
+}
+
+.Brick {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    animation: circleFade 2s infinite ease-in-out both;
+}
+
+
+.brick1{
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s;
+}
+
+.brick2{
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+}
+
+.brick3{
+    -webkit-animation-delay: -1.5s;
+    animation-delay: -1.5s;
+}

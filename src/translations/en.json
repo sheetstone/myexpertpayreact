@@ -3,6 +3,13 @@
   "myexpertpay.components.Footer.license.message": "Ⓒ2020 Sheetstone Technology Solutions",
   "myexpertpay.components.Header.features": "Features",
   "myexpertpay.components.Header.home": "Home",
+
+  "myexpertpay.components.nav.bankAccount": "Bank Account",
+  "myexpertpay.components.nav.caseInfo": "Case Info",
+  "myexpertpay.components.nav.recipients": "Recipients",
+  "myexpertpay.components.nav.payment": "Payment",
+  "myexpertpay.components.nav.logo": "My Expertpay logo",
+
   "myexpertpay.containers.FeaturePage.css.header": "Features",
   "myexpertpay.containers.FeaturePage.css.message": "Next generation CSS",
   "myexpertpay.containers.FeaturePage.feedback.header": "Instant feedback",
