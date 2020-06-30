@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { COLOR } from '../../globalStyle/_styleConstant';
+import { COLOR } from 'globalStyle/_styleConstant';
 import classes from './LoadingIndicator.module.scss';
 
 const Brick = (props) => {

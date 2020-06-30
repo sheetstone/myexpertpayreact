@@ -2,7 +2,7 @@ import React from 'react';
 import { Tab, Container, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartArea, faCommentDots, faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
-import AccountSummary from '../AccountSummary';
+import AccountSummary from '../AccountSummary/accountSummary';
 // import Messages from '../Messages';
 // import ActivityCalendar from '../ActivityCalendar';
 

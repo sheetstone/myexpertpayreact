@@ -9,15 +9,17 @@ export function deletePayment(id) {
 }
 
 function get(url) {
-  return fetch(baseUrl + url).then(onSuccess, onError);
+  return fetch(baseUrl + url).then(onSuccess)
 }
 
-function onSuccess(response) {
-  return response.json();
-}
-
-function onError(error) {
-  console.log(error);
+function onSuccess(response) {  
+  console.log(response);
+  if (response.ok){
+    return response.json();
+  } else{
+    const err =  new Error(response.statusText);
+    throw err
+  }
 }
 
 function del(url) {
@@ -25,5 +27,5 @@ function del(url) {
     method: 'DELETE',
   });
 
-  return fetch(request).then(onSuccess, onError);
+  return fetch(request).then(onSuccess);
 }

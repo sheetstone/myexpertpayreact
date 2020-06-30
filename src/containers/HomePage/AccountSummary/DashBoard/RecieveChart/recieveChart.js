@@ -1,7 +1,8 @@
 import React from 'react';
 import Chart from 'react-google-charts';
+import PropTypes from 'prop-types';
 
-import style from './styles/style.scss';
+import classes from './recieveChart.module.scss';
 
 // with google-charts;
 const options = {
@@ -12,14 +13,13 @@ const options = {
   is3D: false,
 };
 
-class RecieveChart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const RecieveChart = (props) =>{
+  const {dashboardType, chartType, paymentData} = props;
 
-  getChartData() {
+
+  const getChartData = () => {
     let status;
-    switch (this.props.dashboardtype) {
+    switch (dashboardType) {
       case 'recieved':
         status = 0;
         break;
@@ -29,25 +29,23 @@ class RecieveChart extends React.Component {
       default:
         status = 0;
     }
-    switch (this.props.charttype) {
+    switch (chartType) {
       case 1: // Recipent selected
-        return this.getChartDataByKey('name', status);
+        return getChartDataByKey('name', status);
       case 2: // Bank selected
-        return this.getChartDataByKey('bank', status);
+        return getChartDataByKey('bank', status);
       case 3: // Case selected
-        return this.getChartDataByKey('casenumber', status);
+        return getChartDataByKey('casenumber', status);
       case 4: // Categoray selected
-        return this.getChartDataByKey('catgory', status);
+        return getChartDataByKey('catgory', status);
       default:
         break;
     }
   }
 
-  getChartDataByKey(key, sta) {
+  const getChartDataByKey = (key, sta) => {
     const keylist = [];
     const fineddata = [[key, 'Amount']];
-
-    const { paymentData } = this.props;
 
     if (!!paymentData === false) return 0;
     //console.log(paymentData);
@@ -68,20 +66,24 @@ class RecieveChart extends React.Component {
     return fineddata.concat(group);
   }
 
-  render() {
-    return (
-      <div>
-        <Chart
-          chartType="PieChart"
-          width="100%"
-          height="400px"
-          data={this.getChartData()}
-          options={options}
-          className={style.piechart}
-        />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Chart
+        chartType="PieChart"
+        width="100%"
+        height="400px"
+        data={getChartData()}
+        options={options}
+        className={classes.Piechart}
+      />
+    </div>
+  );
+}
+
+RecieveChart.propTypes = {
+  dashboardType: PropTypes.oneOf(['recieved','sent']).isRequired,
+  chartType: PropTypes.number.isRequired,
+  paymentData: PropTypes.array.isRequired,
 }
 
 export default RecieveChart;

@@ -15,8 +15,8 @@ import HomePage from './HomePage/Homepage';
 //import CaseInfo from 'containers/CaseInfo/Loadable';
 //import Payment from 'containers/Payment/Loadable';
 //import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from '../components/UI/Header/Header';
-import Footer from '../components/UI/Footer/Footer';
+import Header from 'components/Layout/Header/Header';
+import Footer from 'components/Layout/Footer/Footer';
 
 export default function App() {
   return (
