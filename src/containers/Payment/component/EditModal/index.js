@@ -51,9 +51,6 @@ export default function EditBankAccount(props) {
     props.onHide();
   };
 
-  //console.log(JSON.stringify(formState));
-  //console.log(props);
-
   return (
     <Modal show={props.show} onHide={props.onHide}>
       <Form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>

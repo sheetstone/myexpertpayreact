@@ -44,7 +44,6 @@ function Messages() {
         </thead>
         <tbody>
           {json.data.map((item, i) => {
-            // console.log(item);
             const {type, recieved, amount, reciptent} = item
             return (
               <tr key={i}>

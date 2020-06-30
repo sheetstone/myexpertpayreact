@@ -26,12 +26,7 @@ const DatePicker =(props) => {
   }
   const { name, label, id, value } = props;
 
-
   const newdate = moment(value);
-  console.log(value);
-  console.log(newdate);
-  console.log(newdate.format('YYYY-MM-DD'))
-
 
   return (
     <div className={`${classes.calendarGroup} ${(showCalendar)?classes.bringUp:""}`}>

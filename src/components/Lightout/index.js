@@ -35,7 +35,6 @@ class Lightout extends React.Component {
   }
 
   statusChange(row, col) {
-    console.log(row, col);
 
     let tmp = [...this.state.matrix];
     tmp[row][col] = !tmp[row][col];

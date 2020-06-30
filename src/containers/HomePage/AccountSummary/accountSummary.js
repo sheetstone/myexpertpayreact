@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import LoadingIndicator from 'components/UI/LoadingIndicator/LoadingIndicator';
 
 import { getPayments } from 'api/paymentApi';
 
+import LoadingIndicator from 'components/UI/LoadingIndicator/LoadingIndicator';
 import DashBoard from './DashBoard/dashBoard';
+import ErrorMessage from 'components/UI/errorMessage/ErrorMessage';
 
 import classes from './accountSummary.module.scss';
 
@@ -28,7 +29,7 @@ const AccountSummary = () => {
   }
 
   if (error){
-    return <h3>{error.message}</h3>
+    return <ErrorMessage message={error.message}/>
   }
 
   return (

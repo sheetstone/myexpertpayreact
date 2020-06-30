@@ -13,7 +13,6 @@ function get(url) {
 }
 
 function onSuccess(response) {  
-  console.log(response);
   if (response.ok){
     return response.json();
   } else{
