@@ -1,0 +1,20 @@
+[
+    {
+      "type": "Request received",
+      "recieved": "01/01/2016",
+      "amount": 100,
+      "reciptent": "Betty Brant"
+    },
+    {
+      "type": "Request received",
+      "recieved": "01/01/2016",
+      "amount": 2400,
+      "reciptent": "Mary Mae"
+    },
+    {
+      "type": "Money recieved",
+      "recieved": "01/01/2016",
+      "amount": 29.9,
+      "reciptent": "Alice Ace"
+    }
+]

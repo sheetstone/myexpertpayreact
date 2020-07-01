@@ -1,7 +1,7 @@
 import React from 'react';
 import Day from './Day';
 
-import style from './styles/style.scss';
+import classes from './activityCalendar.module.scss';
 
 function Week(props) {
   const days = [];
@@ -35,7 +35,7 @@ function Week(props) {
   }
 
   return (
-    <div className={style.week} key={days[0]}>
+    <div className={classes.week} key={days[0]}>
       {days}
     </div>
   );

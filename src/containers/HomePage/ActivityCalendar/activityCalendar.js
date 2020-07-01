@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import LoadingIndicator from 'components/LoadingIndicator';
+import { Container } from 'react-bootstrap';
+import LoadingIndicator from 'components/UI/LoadingIndicator/LoadingIndicator';
 
 import { getEvents } from 'api/eventsApi';
 import moment from 'moment';
@@ -10,7 +10,7 @@ import WeekHeaderRow from './WeekHeaderRow';
 import CalendarHeader from './CalendarHeader';
 import EventDetail from './EventDetail';
 
-import style from './styles/style.scss';
+import classes from './activityCalendar.module.scss';
 
 class ActivityCalender extends React.Component {
   constructor(props) {
@@ -29,12 +29,13 @@ class ActivityCalender extends React.Component {
   }
 
   componentDidMount() {
-    getEvents().then(data =>
+    getEvents().then(data => {
+      console.log(data);
       this.setState({
         eventsData: data,
         isLoading: false,
-      }),
-    );
+      })
+    });
   }
 
   previous(e) {
@@ -89,7 +90,7 @@ class ActivityCalender extends React.Component {
           date={date.clone()}
           month={month}
           events={events}
-          className={style.week}
+          className={classes.week}
           selectEvent={(event, item) => this.selectEvent(event, item)}
         />,
       );
@@ -159,7 +160,7 @@ class ActivityCalender extends React.Component {
     }
     return (
       <Container>
-        <section className={style.calendar} onClick={this.disMissSelection}>
+        <section className={classes.calendar} onClick={this.disMissSelection}>
           <CalendarHeader month={this.state.month} previous={this.previous} next={this.next} />
           <WeekHeaderRow />
           {this.renderWeeks()}

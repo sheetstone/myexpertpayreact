@@ -1,40 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
 
 import formatMoney from 'utils/formatMoney';
+import {getMessages} from 'api/messagesApi';
 
-import style from './styles/style.scss';
-
-// TODO : move data set to JSON server
-const json = {
-  data: [
-    {
-      type: 'Request received',
-      recieved: '01/01/2016',
-      amount: 100,
-      reciptent: 'Betty Brant',
-    },
-    {
-      type: 'Request received',
-      recieved: '01/01/2016',
-      amount: 2400,
-      reciptent: 'Mary Mae',
-    },
-    {
-      type: 'Money recieved',
-      recieved: '01/01/2016',
-      amount: 29.9,
-      reciptent: 'Alice Ace',
-    },
-  ],
-};
+import classes from './message.module.scss';
 
 const header = ['Type', 'Recieved', 'Amount', 'Reciptent', 'Action'];
 
-function Messages() {
+const Messages = () => {
+  const [messages, setMessages] = useState([]);
+
+  useEffect(()=>{
+    getMessages().then(res => {
+      setMessages(res);
+    }).catch(err => {
+      console.log(err)
+    })
+  }, [])
+
+  //TODO: add accept or decline logic
   return (
-    <Container className={style.messageContainer}>
-      <Table hover className={style.messageTable}>
+    <Container className={classes.messageContainer}>
+      <Table hover className={classes.messageTable}>
         <thead>
           <tr>
             {header.map((h, i) => (
@@ -43,15 +31,15 @@ function Messages() {
           </tr>
         </thead>
         <tbody>
-          {json.data.map((item, i) => {
+          {messages.map((item, i) => {
             const {type, recieved, amount, reciptent} = item
             return (
               <tr key={i}>
                 <td>{type}</td>
                 <td>{recieved}</td>
-                <td className={style.price}>
+                <td className={classes.price}>
                   <span>$</span>
-                  <span className={style.priceNumber}>{formatMoney(amount)}</span>
+                  <span className={classes.priceNumber}>{formatMoney(amount)}</span>
                 </td>
                 <td>{reciptent}</td>
                 <td>

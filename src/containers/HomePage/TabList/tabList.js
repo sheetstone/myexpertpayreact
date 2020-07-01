@@ -1,10 +1,11 @@
 import React from 'react';
 import { Tab, Container, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartArea, faCommentDots, faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
+import { faChartArea, faCommentDots, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
+
 import AccountSummary from '../AccountSummary/accountSummary';
-// import Messages from '../Messages';
-// import ActivityCalendar from '../ActivityCalendar';
+import Messages from '../Messages/message';
+import ActivityCalendar from '../ActivityCalendar/activityCalendar';
 
 import classes from './tabList.module.scss';
 
@@ -36,7 +37,7 @@ function TabList() {
           </Nav.Item>
         </Nav>
       </Container>
-
+        {/*TODO: Make the component load and unlaod with Router*/ }
       <Tab.Content
         className={classes.tabContent}
         style={{ minHeight: getMinHeight() }}
@@ -45,10 +46,10 @@ function TabList() {
           <AccountSummary />
         </Tab.Pane>
         <Tab.Pane eventKey="messages">
-          {/*<Messages />*/}
+          <Messages />
         </Tab.Pane>
         <Tab.Pane eventKey="activity">
-          {/*<ActivityCalendar />*/}
+          <ActivityCalendar />
         </Tab.Pane>
       </Tab.Content>
     </Tab.Container>

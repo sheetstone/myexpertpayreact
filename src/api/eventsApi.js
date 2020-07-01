@@ -1,30 +1,10 @@
-import getBaseUrl from './baseUrl';
-
-const baseUrl = getBaseUrl();
+import { baseUrl } from './baseUrl';
+import { onSuccess } from './baseApi';
 
 export function getEvents() {
-  return get('Events');
-}
-export function deletePayment(id) {
-  return del(`Events/${id}`);
+  return get('events.json');
 }
 
 function get(url) {
-  return fetch(baseUrl + url).then(onSuccess, onError);
-}
-
-function onSuccess(response) {
-  return response.json();
-}
-
-function onError(error) {
-  console.log(error);
-}
-
-function del(url) {
-  const request = new Request(baseUrl + url, {
-    method: 'DELETE',
-  });
-
-  return fetch(request).then(onSuccess, onError);
+  return fetch(baseUrl + url).then(onSuccess);
 }

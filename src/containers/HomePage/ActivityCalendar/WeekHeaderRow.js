@@ -1,16 +1,16 @@
 import React from 'react';
-import style from './styles/style.scss';
+import classes from './activityCalendar.module.scss';
 
 function WeekHeaderRow(props) {
     return (
-      <div className={style.headerweek}>
-        <div className={style.headerday}>Sun</div>
-        <div className={style.headerday}>Mon</div>
-        <div className={style.headerday}>Tue</div>
-        <div className={style.headerday}>Wed</div>
-        <div className={style.headerday}>Thu</div>
-        <div className={style.headerday}>Fri</div>
-        <div className={style.headerday}>Sat</div>
+      <div className={classes.headerweek}>
+        <div className={classes.headerday}>Sun</div>
+        <div className={classes.headerday}>Mon</div>
+        <div className={classes.headerday}>Tue</div>
+        <div className={classes.headerday}>Wed</div>
+        <div className={classes.headerday}>Thu</div>
+        <div className={classes.headerday}>Fri</div>
+        <div className={classes.headerday}>Sat</div>
       </div>
     );
 }

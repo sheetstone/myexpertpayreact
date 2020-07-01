@@ -10,7 +10,7 @@ import { Container } from 'react-bootstrap';
 
 import classes from './Homepage.module.scss';
 import Welcome from './Welcome'
-import TabList from './TabList';
+import TabList from './TabList/tabList';
 
 export default function HomePage() {
   return (

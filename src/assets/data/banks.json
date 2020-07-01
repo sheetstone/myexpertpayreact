@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Bank of America",
+    "type": "Checking",
+    "rountinnum": 950009107124,
+    "accountnum": 921619686530,
+    "verified": true
+  },
+  {
+    "id": 2,
+    "name": "U.S. Corp",
+    "type": "Checking",
+    "rountinnum": 884425749303,
+    "accountnum": 449220274342,
+    "verified": true
+  },
+  {
+    "id": 3,
+    "name": "Chase",
+    "type": "Checking",
+    "rountinnum": 163599605206,
+    "accountnum": 769344795262,
+    "verified": false
+  },
+  {
+    "id": 4,
+    "name": "Wells Fargo",
+    "type": "Checking",
+    "rountinnum": 84527973318,
+    "accountnum": 672827548580,
+    "verified": true
+  },
+  {
+    "id": 5,
+    "name": "Capital One",
+    "type": "Checking",
+    "rountinnum": 538687763502,
+    "accountnum": 206236314726,
+    "verified": true
+  }
+]

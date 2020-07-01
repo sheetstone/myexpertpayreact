@@ -1,7 +1,8 @@
 import React from 'react';
 
-import style from './styles/style.scss';
 import drawDot from './drawDot';
+
+import classes from './activityCalendar.module.scss';
 
 function Day(props) {
   const {
@@ -11,7 +12,7 @@ function Day(props) {
   } = props;
 
   const eventsList = events.map((item, i) => (
-    <li className={style.eventsli} key={item.id} onClick={(event) => selectEvent(event, item)}>
+    <li className={classes.eventsli} key={item.id} onClick={(event) => selectEvent(event, item)}>
       {drawDot(i)}
       <span>{item.eventName}</span>
     </li>
@@ -19,10 +20,10 @@ function Day(props) {
 
   return (
     <div
-      className={`${style.day} ${isToday ? style.today : ''}
-                  ${isCurrentMonth ? '' : style.differentMonth}`}>
-      <span className={style.dayNum}>{number}</span>
-      <ul className={style.eventslist}>{eventsList}</ul>
+      className={`${classes.day} ${isToday ? classes.today : ''}
+                  ${isCurrentMonth ? '' : classes.differentMonth}`}>
+      <span className={classes.dayNum}>{number}</span>
+      <ul className={classes.eventslist}>{eventsList}</ul>
     </div>
   );
 }

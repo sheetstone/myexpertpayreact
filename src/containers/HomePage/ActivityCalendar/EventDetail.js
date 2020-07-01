@@ -1,10 +1,10 @@
 import React from 'react';
 import moment from 'moment';
-
-import drawDot from './drawDot';
-import style from './styles/style.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faUser, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+
+import drawDot from './drawDot';
+import classes from './activityCalendar.module.scss';
 
 function EventDetail(props) {
   const { selectedEvent, pos } = props;
@@ -30,18 +30,18 @@ function EventDetail(props) {
       }
 
       msg = (
-        <div className={style.rightcol}>
-          <div className={style.eventDate}>{mStart.format("dddd, MMMM DD, YYYY")}</div>
-          <div className={style.eventTime}>{mStart.format("hh:mm a")} to {mEnd.format("hh:mm a")} <span className={style.eventlasting}>{lastingMsg}</span></div>
+        <div className={classes.rightcol}>
+          <div className={classes.eventDate}>{mStart.format("dddd, MMMM DD, YYYY")}</div>
+          <div className={classes.eventTime}>{mStart.format("hh:mm a")} to {mEnd.format("hh:mm a")} <span className={classes.eventlasting}>{lastingMsg}</span></div>
         </div>
       );
     } else {
       const diff = mEnd.diff(mStart, 'days');
       msg = (
-        <div className={style.rightcol}>
-          <div className={style.eventDate}>{mStart.format("dddd, MMMM DD, YYYY")}</div>
-          <div className={style.eventDate}>{mEnd.format("dddd, MMMM DD, YYYY")}</div>
-          <div className={style.eventlasting}>({ (diff == 0)?1:diff } Days)</div>
+        <div className={classes.rightcol}>
+          <div className={classes.eventDate}>{mStart.format("dddd, MMMM DD, YYYY")}</div>
+          <div className={classes.eventDate}>{mEnd.format("dddd, MMMM DD, YYYY")}</div>
+          <div className={classes.eventlasting}>({ (diff == 0)?1:diff } Days)</div>
         </div>
       );
     }
@@ -56,41 +56,41 @@ function EventDetail(props) {
     posLeft = pos.left + pos.width + 5 +  "px";
   }
 
-  const posStyle = {
+  const posclasses = {
     top: pos.y - 130 + window.pageYOffset + "px",
     left: posLeft,
   };
 
   return (
-    <div className={style.eventDetail} style={posStyle}>
-      <div className={style.eventHeader}>
-        <div className={style.leftcol}>{drawDot(0)}</div>
-        <div className={style.rightcol}>{eventName}</div>
+    <div className={classes.eventDetail} classes={posclasses}>
+      <div className={classes.eventHeader}>
+        <div className={classes.leftcol}>{drawDot(0)}</div>
+        <div className={classes.rightcol}>{eventName}</div>
       </div>
-      <div className={style.eventRow}>
-        <div className={style.leftcol}>
+      <div className={classes.eventRow}>
+        <div className={classes.leftcol}>
           <FontAwesomeIcon icon={faClock} color="#b2a0bb" />
         </div>
         {eventTimeMSG()}
       </div>
-      <div className={style.eventRow}>
-        <div className={style.leftcol}>
+      <div className={classes.eventRow}>
+        <div className={classes.leftcol}>
           <FontAwesomeIcon icon={faUser} color="#b2a0bb" />
         </div>
-        <div className={style.rightcol}>
-          <span className={style.eventsInviter}>{inviter}</span>
-          <span className={style.invitmeg}>&nbsp; has invited you.</span>
+        <div className={classes.rightcol}>
+          <span className={classes.eventsInviter}>{inviter}</span>
+          <span className={classes.invitmeg}>&nbsp; has invited you.</span>
         </div>
       </div>
-      <div className={style.eventRow}>
-        <div className={style.leftcol}>
+      <div className={classes.eventRow}>
+        <div className={classes.leftcol}>
           <FontAwesomeIcon icon={faLocationArrow} color="#b2a0bb" />
         </div>
-        <div className={style.rightcol}>
+        <div className={classes.rightcol}>
           {location}
         </div>
       </div>
-      <span className={style.trangle}></span>
+      <span className={classes.trangle}></span>
     </div>
   );
 }

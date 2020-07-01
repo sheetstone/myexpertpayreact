@@ -1,4 +1,5 @@
 import { baseUrl } from './baseUrl';
+import { onSuccess } from './baseApi';
 
 
 export function getPayments() {
@@ -10,15 +11,6 @@ export function deletePayment(id) {
 
 function get(url) {
   return fetch(baseUrl + url).then(onSuccess)
-}
-
-function onSuccess(response) {  
-  if (response.ok){
-    return response.json();
-  } else{
-    const err =  new Error(response.statusText);
-    throw err
-  }
 }
 
 function del(url) {
