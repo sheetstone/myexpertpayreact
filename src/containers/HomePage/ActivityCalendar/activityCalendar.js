@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container } from 'react-bootstrap';
-import LoadingIndicator from 'components/UI/LoadingIndicator/LoadingIndicator';
-
-import { getEvents } from 'api/eventsApi';
 import moment from 'moment';
 
+import { getEvents } from 'api/eventsApi';
+import LoadingIndicator from 'components/UI/LoadingIndicator/LoadingIndicator';
+import ErrorMessage from 'components/UI/errorMessage/ErrorMessage';
 import Week from './Week';
 import WeekHeaderRow from './WeekHeaderRow';
 import CalendarHeader from './CalendarHeader';
@@ -12,54 +12,43 @@ import EventDetail from './EventDetail';
 
 import classes from './activityCalendar.module.scss';
 
-class ActivityCalender extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      eventsData: null,
-      isLoading: true,
-      month: moment(),
-      selectedEvent: null,
-      selectedPos: null,
-    };
+const ActivityCalender = () => {
+  console.log('activity Calender rerender');
 
-    this.previous = this.previous.bind(this);
-    this.next = this.next.bind(this);
-    this.disMissSelection = this.disMissSelection.bind(this);
-  }
+  const [eventsData, setEventsData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [month, setMonth] = useState(moment()); // Calendar currently display month
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [selectedPos, setSelectedPos] = useState(null);
+  const [error, setError] = useState(null);
 
-  componentDidMount() {
+  useEffect(()=> {
     getEvents().then(data => {
-      console.log(data);
-      this.setState({
-        eventsData: data,
-        isLoading: false,
-      })
-    });
+      setEventsData(data);
+      setIsLoading(false);
+    }).catch(err => {
+      setError(err);
+      setIsLoading(false);
+    })
+  }, [])
+
+  const previous = (event) => {
+    event.stopPropagation();
+    setMonth(prevMonth => {
+      return prevMonth.subtract(1, 'month');
+    })
   }
 
-  previous(e) {
-    e.stopPropagation();
-    const { month } = this.state;
-
-    this.setState({
-      month: month.subtract(1, 'month'),
-    });
+  const next = (event) => {
+    event.stopPropagation();
+    setMonth(prevMonth => {
+      return prevMonth.add(1, 'month');
+    })
   }
 
-  next(e) {
-    e.stopPropagation();
-    const { month } = this.state;
-
-    this.setState({
-      month: month.add(1, 'month'),
-    });
-  }
-
-  renderWeeks() {
+  const renderWeeks = () => {
     const weeks = [];
     let events = [];
-    const { month } = this.state;
 
     let done = false;
     const date = month
@@ -70,10 +59,9 @@ class ActivityCalender extends React.Component {
     let count = 0;
     let monthIndex = date.month();
 
-    const currentMonthEvents = this.getMonthEvent();
+    const currentMonthEvents = getMonthEvent();
 
     while (!done) {
-      events = new Array();
       if (!!currentMonthEvents) {
         currentMonthEvents.forEach(item => {
           if (date.isSame(item.startTime, 'week')||
@@ -91,7 +79,7 @@ class ActivityCalender extends React.Component {
           month={month}
           events={events}
           className={classes.week}
-          selectEvent={(event, item) => this.selectEvent(event, item)}
+          selectEvent={(event, item) => selectEvent(event, item)}
         />,
       );
 
@@ -104,9 +92,8 @@ class ActivityCalender extends React.Component {
     return weeks;
   }
 
-  getMonthEvent() {
+  const getMonthEvent = () => {
     const events = [];
-    const { month, eventsData } = this.state;
 
     if (!!eventsData) {
       eventsData.forEach(item => {
@@ -123,11 +110,7 @@ class ActivityCalender extends React.Component {
     return events;
   }
 
-  selectEvent(event, item) {
-    // console.log("clicked");
-    // console.log(item.toString());
-    // console.log(event.target.getBoundingClientRect());
-
+  const selectEvent = (event, item) => {
     event.stopPropagation();
     const rectObj = event.currentTarget.getBoundingClientRect();
 
@@ -141,34 +124,34 @@ class ActivityCalender extends React.Component {
       height: rectObj.height,
       width: rectObj.width,
     };
-    this.setState({
-      selectedEvent: Object.assign({}, item),
-      selectedPos: pos,
-    });
-  }
-  disMissSelection(e) {
-    this.setState({
-      selectedEvent: null,
-    })
+  
+    setSelectedEvent( Object.assign({}, item));
+    setSelectedPos(pos);
   }
 
-  render() {
-    const { isLoading, selectedEvent, selectedPos } = this.state;
-
-    if (isLoading) {
-      return <LoadingIndicator />;
-    }
-    return (
-      <Container>
-        <section className={classes.calendar} onClick={this.disMissSelection}>
-          <CalendarHeader month={this.state.month} previous={this.previous} next={this.next} />
-          <WeekHeaderRow />
-          {this.renderWeeks()}
-          <EventDetail selectedEvent={selectedEvent} pos={selectedPos} />
-        </section>
-      </Container>
-    );
+  const disMissSelection = (e) => {
+    setSelectedEvent(null);
   }
+
+
+  if (isLoading) {
+    return <LoadingIndicator />;
+  }
+
+  if (error){
+    return <ErrorMessage message={error.message}/>
+  }
+
+  return (
+    <Container>
+      <section className={classes.calendar} onClick={disMissSelection}>
+        <CalendarHeader month={month} previous={previous} next={next} />
+        <WeekHeaderRow />
+        {renderWeeks()}
+        <EventDetail selectedEvent={selectedEvent} pos={selectedPos} />
+      </section>
+    </Container>
+  );
 }
 
 export default ActivityCalender;

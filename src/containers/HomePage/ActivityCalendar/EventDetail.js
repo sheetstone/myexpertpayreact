@@ -6,7 +6,7 @@ import { faClock, faUser, faLocationArrow } from '@fortawesome/free-solid-svg-ic
 import drawDot from './drawDot';
 import classes from './activityCalendar.module.scss';
 
-function EventDetail(props) {
+const EventDetail = (props) => {
   const { selectedEvent, pos } = props;
 
   if (selectedEvent == null) {
@@ -41,7 +41,7 @@ function EventDetail(props) {
         <div className={classes.rightcol}>
           <div className={classes.eventDate}>{mStart.format("dddd, MMMM DD, YYYY")}</div>
           <div className={classes.eventDate}>{mEnd.format("dddd, MMMM DD, YYYY")}</div>
-          <div className={classes.eventlasting}>({ (diff == 0)?1:diff } Days)</div>
+          <div className={classes.eventlasting}>({ (diff === 0)?1:diff } Days)</div>
         </div>
       );
     }
