@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Week from './Week';
+import Week from './week';
 
 import classes from './activityCalendar.module.scss';
 

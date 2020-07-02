@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Day from './Day';
+import Day from './day';
 
 
 import classes from './activityCalendar.module.scss';

@@ -1,3 +1,6 @@
+/*
+* Process data when get successful response from server
+*/
 export function onSuccess(response) {  
     if (response.ok){
       return response.json();

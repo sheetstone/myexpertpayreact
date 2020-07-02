@@ -3,7 +3,7 @@
  */
 import React from 'react';
 
-import style from './styles/style.scss';
+import classes from './bankItem.module.scss';
 import SideDropDownMenu from '../SideDropDownMenu';
 
 function formatBankNumber(number = "0") {
@@ -18,7 +18,7 @@ function formatBankNumber(number = "0") {
 
 function labelActive() {
   return (
-    <span className={style.labelActive}>
+    <span className={classes.labelActive}>
       Active
     </span>
   );
@@ -26,20 +26,20 @@ function labelActive() {
 
 function labelVerification() {
   return (
-    <span className={style.labelVerification}>
+    <span className={classes.labelVerification}>
       Require Verification
     </span>
   );
 }
 
 export default function BankItem(props) {
-  const { bankitem, delBank } = props
+  const { bankitem } = props
   return (
-    <div className={style.bankCard}>
-      <div className={style.bankName}>{bankitem.name}</div>
-      <SideDropDownMenu delBank={() => delBank(bankitem)} />
-      <div className={style.bankType}>{bankitem.type}</div>
-      <div className={style.bankNum}>{ formatBankNumber(bankitem.accountnum) }</div>
+    <div className={classes.bankCard}>
+      <div className={classes.bankName}>{bankitem.name}</div>
+      {/*<SideDropDownMenu delBank={() => delBank(bankitem)} />*/}
+      <div className={classes.bankType}>{bankitem.type}</div>
+      <div className={classes.bankNum}>{ formatBankNumber(bankitem.accountnum) }</div>
       <div>{(bankitem.verified) ? labelActive() : labelVerification()}</div>
     </div>
   );

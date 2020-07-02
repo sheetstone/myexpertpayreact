@@ -1,4 +1,4 @@
-@import './app/style/variables';
+@import '../../../globalStyle/variables';
 
 .bankCard {
   background: white;
@@ -7,6 +7,7 @@
   padding: .5rem .75rem;
   position: relative;
 }
+
 .bankName {
   color: #4B96AC;
   font-size: 18px;
@@ -15,18 +16,20 @@
   margin-top: 0.25rem;
   margin-bottom: 0.5rem;
 }
-.bankType{
+
+.bankType {
   font-size: 14px;
   color: #666;
   margin-bottom: 0.5rem;
 }
-.bankNum{
+
+.bankNum {
   font-size: 13px;
   color: #666;
   margin-bottom: 0.5rem;
 }
 
-.labelActive{
+.labelActive {
   font-size: 12px;
   font-weight: bold;
   background: $primary;
@@ -35,7 +38,8 @@
   padding: 0.2em 0.4em;
   border-radius: 0.4em;
 }
-.labelVerification{
+
+.labelVerification {
   font-size: 12px;
   font-weight: bold;
   background: $warning;
@@ -43,5 +47,4 @@
   display: inline-block;
   padding: 0.2em 0.4em;
   border-radius: 0.4em;
-
 }

@@ -1,10 +1,10 @@
-import getBaseUrl from './baseUrl';
+import { baseUrl } from './baseUrl';
+import { onSuccess } from './baseApi';
 import resolveBankName from './resolveBankName';
 
-const baseUrl = getBaseUrl();
 
 export async function getBanks() {
-  return get('banks');
+  return get('banks.json');
 }
 export async function deleteBank(id) {
   return del(`banks/${id}`);
@@ -21,7 +21,7 @@ export async function addBank(data) {
 }
 
 function get(url) {
-  return fetch(baseUrl + url).then(onSuccess, onError);
+  return fetch(baseUrl + url).then(onSuccess);
 }
 
 function post(url, data) {
@@ -37,10 +37,6 @@ function post(url, data) {
   })
   .then(response => response.json())
   .then(json => console.log(json));
-}
-
-function onSuccess(response) {
-  return response.json();
 }
 
 function onError(error) {

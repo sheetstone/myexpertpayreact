@@ -8,7 +8,7 @@ import { Modal, Button, Form, Col } from 'react-bootstrap';
 import { addBank } from 'api/bankApi';
 import validRoutin from 'utils/validRoutin';
 import * as yup from 'yup';
-import messages from '../../messages';
+import messages from '../messages';
 
 import style from './styles/style.scss';
 
@@ -45,7 +45,7 @@ export default function EditBankAccount(props) {
 
   const onSubmit = async data => {
     await triggerValidation();
-    console.log("Submitting:"+JSON.stringify(data));
+    console.log("Submitting:" + JSON.stringify(data));
     const newdata = await addBank(data);
     props.reloadState();
     props.onHide();

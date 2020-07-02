@@ -8,10 +8,10 @@ import LoadingIndicator from 'components/UI/LoadingIndicator/LoadingIndicator';
 import ErrorMessage from 'components/UI/errorMessage/ErrorMessage';
 
 import CalendarContainer from './calendarContainer';
-import Weeks from './Weeks';
-import WeekHeaderRow from './WeekHeaderRow';
-import CalendarHeader from './CalendarHeader';
-import EventDetail from './EventDetail';
+import Weeks from './weeks';
+import WeekHeaderRow from './weekHeaderRow';
+import CalendarHeader from './calendarHeader';
+import EventDetail from './eventDetail';
 
 const ActivityCalender = () => {
   console.log('activity Calender rerender');
