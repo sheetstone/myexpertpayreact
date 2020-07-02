@@ -104,11 +104,18 @@
     background: rgba($secondary, 0.6);
     color: white;
   }
+  
+  &.active{
+    background: rgba($primary, 0.6);
+    color: white;
+  }  
 
   span {
     margin-left: 0.3em;
     user-select: none;
   }
+
+
 }
 
 .differentMonth {

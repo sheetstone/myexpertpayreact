@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { SelectEventContext } from './selectEvent-context';
-
-import drawDot from 'components/UI/drawDot/drawDot';
+import EventItem from './EventItem';
 
 import classes from './activityCalendar.module.scss';
 
@@ -12,14 +10,7 @@ const Day = (props) => {
     events
   } = props;
 
-  const selectEventCnt = useContext(SelectEventContext);
-
-  const eventsList = events.map((item, i) => (
-    <li className={classes.eventsli} key={item.id+Math.random()} onClick={(event) => selectEventCnt.selectEvent(event, item)}>
-      {drawDot(i)}
-      <span>{item.eventName}</span>
-    </li>
-  ));
+  const eventsList = events.map((item, i) => <EventItem event={item} index={i} key={item.id}/>);
 
   return (
     <div

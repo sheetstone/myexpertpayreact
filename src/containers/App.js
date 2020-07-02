@@ -11,7 +11,7 @@ import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from './HomePage/Homepage';
-//import BankAccount from 'containers/BankAccount/Loadable';
+import BankAccount from 'containers/BankAccount/Loadable';
 //import CaseInfo from 'containers/CaseInfo/Loadable';
 //import Payment from 'containers/Payment/Loadable';
 //import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -27,8 +27,8 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        {/*<Route path="/bankaccount" component={BankAccount} />
-        <Route path="/caseinfo" component={CaseInfo} />
+        <Route path="/bankaccount" component={BankAccount} />
+        {/*<Route path="/caseinfo" component={CaseInfo} />
         <Route path="/payment" component={Payment} />
         <Route path="/" component={NotFoundPage} />
         <Footer />
