@@ -10,7 +10,7 @@ import validRoutin from 'utils/validRoutin';
 import * as yup from 'yup';
 import messages from '../messages';
 
-import style from './styles/style.scss';
+import classes from './editBankForm.module.scss';
 
 yup.addMethod(yup.string, 'isRounting', validRoutin);
 
@@ -69,7 +69,7 @@ export default function EditBankAccount(props) {
                 <Form.Label>
                   <FormattedMessage {...messages.rountingNumber} />
                   &nbsp;
-                  <span className={style.required} aria-label="required">
+                  <span className={classes.required} aria-label="required">
                     *
                   </span>
                 </Form.Label>
@@ -99,7 +99,7 @@ export default function EditBankAccount(props) {
                 <Form.Label>
                   <FormattedMessage {...messages.accountNumber} />
                   &nbsp;
-                  <span className={style.required} aria-label="required">
+                  <span className={classes.required} aria-label="required">
                     *
                   </span>
                 </Form.Label>
@@ -126,7 +126,7 @@ export default function EditBankAccount(props) {
                 <Form.Label>
                   <FormattedMessage {...messages.accountNumberConfirmation} />
                   &nbsp;
-                  <span className={style.required} aria-label="required">
+                  <span className={classes.required} aria-label="required">
                     *
                   </span>
                 </Form.Label>

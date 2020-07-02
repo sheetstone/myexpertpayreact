@@ -11,8 +11,8 @@ import LoadingIndicator from 'components/UI/LoadingIndicator/LoadingIndicator';
 
 import { getBanks, deleteBank } from 'api/bankApi';
 
-import BankList from './BankList';
-import EditModal from './EditModal';
+import BankList from './BankList/bankList';
+import EditModal from './EditBankForm/editBankForm';
 
 import style from './bankAccount.module.scss';
 import messages from './messages';

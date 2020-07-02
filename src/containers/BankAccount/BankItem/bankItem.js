@@ -4,7 +4,7 @@
 import React from 'react';
 
 import classes from './bankItem.module.scss';
-import SideDropDownMenu from '../SideDropDownMenu';
+import SideDropDown from '../SideDropDown/sideDropDown';
 
 function formatBankNumber(number = "0") {
   const reg = /\d{4}$/gm;
@@ -37,7 +37,7 @@ export default function BankItem(props) {
   return (
     <div className={classes.bankCard}>
       <div className={classes.bankName}>{bankitem.name}</div>
-      {/*<SideDropDownMenu delBank={() => delBank(bankitem)} />*/}
+      <SideDropDown />
       <div className={classes.bankType}>{bankitem.type}</div>
       <div className={classes.bankNum}>{ formatBankNumber(bankitem.accountnum) }</div>
       <div>{(bankitem.verified) ? labelActive() : labelVerification()}</div>
