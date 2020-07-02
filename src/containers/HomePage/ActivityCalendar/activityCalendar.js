@@ -1,16 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Container } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+
 import moment from 'moment';
 
 import { getEvents } from 'api/eventsApi';
+import SelectEventContextProvider from '../ActivityCalendar/selectEvent-context';
 import LoadingIndicator from 'components/UI/LoadingIndicator/LoadingIndicator';
 import ErrorMessage from 'components/UI/errorMessage/ErrorMessage';
-import Week from './Week';
+
+import CalendarContainer from './calendarContainer';
+import Weeks from './Weeks';
 import WeekHeaderRow from './WeekHeaderRow';
 import CalendarHeader from './CalendarHeader';
 import EventDetail from './EventDetail';
-
-import classes from './activityCalendar.module.scss';
 
 const ActivityCalender = () => {
   console.log('activity Calender rerender');
@@ -18,8 +19,6 @@ const ActivityCalender = () => {
   const [eventsData, setEventsData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [month, setMonth] = useState(moment()); // Calendar currently display month
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [selectedPos, setSelectedPos] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(()=> {
@@ -32,107 +31,23 @@ const ActivityCalender = () => {
     })
   }, [])
 
+  // Click function for show previous month
   const previous = (event) => {
+    console.log('clicked');
     event.stopPropagation();
     setMonth(prevMonth => {
-      return prevMonth.subtract(1, 'month');
+      return prevMonth.clone().subtract(1, 'month')
     })
   }
 
+  // Click function for show next month
   const next = (event) => {
+    console.log('clicked');
     event.stopPropagation();
     setMonth(prevMonth => {
-      return prevMonth.add(1, 'month');
+      return prevMonth.clone().add(1, 'month')
     })
   }
-
-  const renderWeeks = () => {
-    const weeks = [];
-    let events = [];
-
-    let done = false;
-    const date = month
-      .clone()
-      .startOf('month')
-      .add('w' - 1)
-      .day('Sunday');
-    let count = 0;
-    let monthIndex = date.month();
-
-    const currentMonthEvents = getMonthEvent();
-
-    while (!done) {
-      if (!!currentMonthEvents) {
-        currentMonthEvents.forEach(item => {
-          if (date.isSame(item.startTime, 'week')||
-              date.isBetween(item.startTime,item.endTime)||
-              date.isSame(item.endTime, 'week')
-          )
-            events.push(Object.assign({}, item));
-        });
-      }
-
-      weeks.push(
-        <Week
-          key={date}
-          date={date.clone()}
-          month={month}
-          events={events}
-          className={classes.week}
-          selectEvent={(event, item) => selectEvent(event, item)}
-        />,
-      );
-
-      date.add(1, 'w');
-
-      done = count++ > 2 && monthIndex !== date.month();
-      monthIndex = date.month();
-    }
-
-    return weeks;
-  }
-
-  const getMonthEvent = () => {
-    const events = [];
-
-    if (!!eventsData) {
-      eventsData.forEach(item => {
-        if (
-          month.isSame(item.startTime, 'month') ||
-          month.clone().endOf("month").isSame(item.startTime, 'week') ||
-          month.clone().startOf('month').isSame(item.startTime, 'week') ||
-          month.isSame(item.endTime, 'month') ||
-          month.clone().endOf("month").isSame(item.endTime, 'week') ||
-          month.clone().startOf('month').isSame(item.endTime, 'week')){
-            events.push(Object.assign({}, item));
-        }})
-    }
-    return events;
-  }
-
-  const selectEvent = (event, item) => {
-    event.stopPropagation();
-    const rectObj = event.currentTarget.getBoundingClientRect();
-
-    const pos = {
-      bottom: rectObj.bottom,
-      left: rectObj.left,
-      top: rectObj.top,
-      right: rectObj.right,
-      x: rectObj.x,
-      y: rectObj.y,
-      height: rectObj.height,
-      width: rectObj.width,
-    };
-  
-    setSelectedEvent( Object.assign({}, item));
-    setSelectedPos(pos);
-  }
-
-  const disMissSelection = (e) => {
-    setSelectedEvent(null);
-  }
-
 
   if (isLoading) {
     return <LoadingIndicator />;
@@ -143,14 +58,14 @@ const ActivityCalender = () => {
   }
 
   return (
-    <Container>
-      <section className={classes.calendar} onClick={disMissSelection}>
-        <CalendarHeader month={month} previous={previous} next={next} />
-        <WeekHeaderRow />
-        {renderWeeks()}
-        <EventDetail selectedEvent={selectedEvent} pos={selectedPos} />
-      </section>
-    </Container>
+    <SelectEventContextProvider>
+        <CalendarContainer>
+          <CalendarHeader month={month} previous={previous} next={next} />
+          <WeekHeaderRow />
+          <Weeks month={month} eventsData={eventsData}/>
+          <EventDetail/>
+        </CalendarContainer>
+    </SelectEventContextProvider>
   );
 }
 

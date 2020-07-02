@@ -2,7 +2,6 @@
 
 .calendar {
   margin: 20px 0;
-
 }
 
 .header {
@@ -117,10 +116,6 @@
 }
 
 .today {
-  // background: $primary;
-  //color: $primary;
-  //font-weight: bold;
-
   .dayNum {
     color: white;
     display: block;
@@ -150,6 +145,7 @@
   }
 }
 
+// EventDetail 
 .eventDetail{
   position: absolute;
   top:0px;

@@ -1,15 +1,16 @@
 import React from 'react';
+
 import Day from './Day';
+
 
 import classes from './activityCalendar.module.scss';
 
 const Week = (props) => {
   const days = [];
-  let dayEvents = [];
-
-  const { date, month, events, selectEvent } = props;
+  const { date, month, events } = props;
 
   for (let i = 0; i < 7; i++) {
+    let dayEvents = [];
     if (!!events) {
       events.forEach(item => {
         if(date.isSame(item.startTime, 'day')||
@@ -27,15 +28,14 @@ const Week = (props) => {
       isToday: date.isSame(new Date(), 'day'),
       date,
     };
-    days.push(<Day key={date.toString()} day={day} events={dayEvents} selectEvent={selectEvent}/>);
-
+    days.push(<Day key={date.format('YYYY-MM-DD')} day={day} events={dayEvents}/>);
     date.add(1, 'day');
   }
 
   return (
-    <div className={classes.week} key={days[0]}>
-      {days}
-    </div>
+      <div className={classes.week}>
+        {days}
+      </div>
   );
 }
 

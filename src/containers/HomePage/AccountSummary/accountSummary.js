@@ -4,8 +4,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { getPayments } from 'api/paymentApi';
 
 import LoadingIndicator from 'components/UI/LoadingIndicator/LoadingIndicator';
-import DashBoard from './DashBoard/dashBoard';
 import ErrorMessage from 'components/UI/errorMessage/ErrorMessage';
+import DashBoard from './DashBoard/dashBoard';
 
 import classes from './accountSummary.module.scss';
 
