@@ -1,31 +1,39 @@
 import { baseUrl } from './baseUrl';
 import { onSuccess } from './baseApi';
+import md5 from 'js-md5';
 import resolveBankName from './resolveBankName';
 
-
 export async function getBanks() {
-  return get('banks.json');
+  return get(`banks.json`);
 }
+
 export async function deleteBank(id) {
-  return del(`banks/${id}`);
+  return del(`banks/${id}.json`);
 }
 
 export async function addBank(data) {
   let bankData = {};
   bankData['name'] = await resolveBankName(data.rountingNumber);
   bankData['type'] = data.accountType;
-  bankData['rountinnum'] = data.rountingNumber;
-  bankData['accountnum'] = data.accountNumber;
+  bankData['rountinnum'] = data.rountingNumber;  //TODO: encypet rountinnum with MD5 method
+  bankData['accountnum'] = data.accountNumber;  //TODO: encypet rountinnum with MD5 method
   bankData['verified'] = false;
-  return post('banks', bankData);
+  return post('banks.json', bankData);
 }
 
 function get(url) {
   return fetch(baseUrl + url).then(onSuccess);
 }
 
+function del(url) {
+  return fetch(baseUrl + url, {
+    method: 'DELETE'
+  }).then(onSuccess);
+}
+
+
 function post(url, data) {
-  console.log("inbankapi",data)
+  console.log("inbankapi", data)
 
   // Post the wrapped data to server
   return fetch(baseUrl + url, {
@@ -37,16 +45,4 @@ function post(url, data) {
   })
   .then(response => response.json())
   .then(json => console.log(json));
-}
-
-function onError(error) {
-  console.log(error); //eslint-disable-line no-console
-}
-
-function del(url) {
-  const request = new Request(baseUrl + url, {
-    method: 'DELETE'
-  });
-
-  return fetch(request).then(onSuccess, onError);
 }

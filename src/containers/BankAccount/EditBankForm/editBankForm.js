@@ -4,6 +4,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers';
 import { Modal, Button, Form, Col } from 'react-bootstrap';
 import { addBank } from 'api/bankApi';
 import validRoutin from 'utils/validRoutin';
@@ -18,7 +19,7 @@ const schema = yup.object().shape({
   rountingNumber: yup
     .string()
     .required('Rounting Number is required')
-    .test('is-Rounting', 'Not a valid Rounting Number', validRoutin),
+    .test('isRounting', 'Not a valid Rounting Number', validRoutin),
   accountNumber: yup
     .string()
     .required('Account Number is required')
@@ -37,22 +38,76 @@ export default function EditBankAccount(props) {
     handleSubmit,
     errors,
     formState,
-    triggerValidation,
   } = useForm({
     mode: 'onBlur',
-    validationSchema: schema,
+    resolver: yupResolver(schema),
   });
 
-  const onSubmit = async data => {
-    await triggerValidation();
+  const formElement = {
+    rountinNumber: {
+      type: "text",
+      name: "rountingNumber",
+      ref: register,
+      isValid: formState.touched.rountingNumber && !errors.rountingNumber,
+      isInvalid: formState.touched.rountingNumber && errors.rountingNumber,
+    },
+    accountNumber: {
+      type: "text",
+      name: "accountNumber",
+      ref: register,
+      isValid: formState.touched.accountNumber && !errors.accountNumber,
+      isInvalid: formState.touched.accountNumber && errors.accountNumber,
+    },
+    confirmAccountNumber: {
+      type: "text",
+      name: "confirmAccountNumber",
+      ref: register,
+      isValid: formState.touched.confirmAccountNumber &&
+      !errors.confirmAccountNumber,
+      isInvalid: formState.touched.confirmAccountNumber &&
+      errors.confirmAccountNumber,
+    },
+    accountTypeChecking: {
+      inline: true,
+      type: "radio",
+      name: "accountType",
+      ref: register,
+      id: "accounttype-radio-checking",
+      value: "checking",
+      label: "Checking"
+    },
+    accountTypeSaving: {
+      inline: true,
+      type: "radio",
+      name: "accountType",
+      ref: register,
+      id: "accounttype-radio-saving",
+      value: "saving",
+      label: "Saving"
+    }
+  }
+
+  const onSubmit = data => {
+  //await triggerValidation();
     console.log("Submitting:" + JSON.stringify(data));
-    const newdata = await addBank(data);
-    props.reloadState();
-    props.onHide();
+    addBank(data).then(res => {
+      props.reloadState();
+      props.onHide();
+    });
   };
 
-  //console.log(JSON.stringify(formState));
-  //console.log(props);
+  const RequiredStar = () => <span className={classes.required} aria-label="required">&nbsp; * </span>
+
+  const ErrorMessage = (props) => {
+    if(errors[props.formEle]){
+     return (
+        <Form.Control.Feedback type="invalid">
+            {errors[props.formEle].message}
+        </Form.Control.Feedback>
+      )
+    }
+    return null;
+  }
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
@@ -68,27 +123,10 @@ export default function EditBankAccount(props) {
               <Form.Group controlId="rountingNumber">
                 <Form.Label>
                   <FormattedMessage {...messages.rountingNumber} />
-                  &nbsp;
-                  <span className={classes.required} aria-label="required">
-                    *
-                  </span>
+                  <RequiredStar />
                 </Form.Label>
-                <Form.Control
-                  type="text"
-                  name="rountingNumber"
-                  ref={register}
-                  isValid={
-                    formState.touched.rountingNumber && !errors.rountingNumber
-                  }
-                  isInvalid={
-                    formState.touched.rountingNumber && errors.rountingNumber
-                  }
-                />
-                {errors.rountingNumber && (
-                  <Form.Control.Feedback type="invalid">
-                    {errors.rountingNumber.message}
-                  </Form.Control.Feedback>
-                )}
+                <Form.Control {...formElement.rountinNumber}/>
+                <ErrorMessage formEle="rountingNumber" />
               </Form.Group>
             </Col>
           </Form.Row>
@@ -98,81 +136,28 @@ export default function EditBankAccount(props) {
               <Form.Group controlId="accountNumber">
                 <Form.Label>
                   <FormattedMessage {...messages.accountNumber} />
-                  &nbsp;
-                  <span className={classes.required} aria-label="required">
-                    *
-                  </span>
+                  <RequiredStar />
                 </Form.Label>
-                <Form.Control
-                  type="text"
-                  name="accountNumber"
-                  ref={register}
-                  isValid={
-                    formState.touched.accountNumber && !errors.accountNumber
-                  }
-                  isInvalid={
-                    formState.touched.accountNumber && errors.accountNumber
-                  }
-                />
-                {errors.accountNumber && (
-                  <Form.Control.Feedback type="invalid">
-                    {errors.accountNumber.message}
-                  </Form.Control.Feedback>
-                )}
+                <Form.Control {...formElement.accountNumber} />
+                <ErrorMessage formEle="accountNumber" />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group controlId="confirmAccountNumber">
                 <Form.Label>
                   <FormattedMessage {...messages.accountNumberConfirmation} />
-                  &nbsp;
-                  <span className={classes.required} aria-label="required">
-                    *
-                  </span>
+                  <RequiredStar />
                 </Form.Label>
-                <Form.Control
-                  type="text"
-                  name="confirmAccountNumber"
-                  ref={register}
-                  isValid={
-                    formState.touched.confirmAccountNumber &&
-                    !errors.confirmAccountNumber
-                  }
-                  isInvalid={
-                    formState.touched.confirmAccountNumber &&
-                    errors.confirmAccountNumber
-                  }
-                />
-                {errors.confirmAccountNumber && (
-                  <Form.Control.Feedback type="invalid">
-                    {errors.confirmAccountNumber.message}
-                  </Form.Control.Feedback>
-                )}
+                <Form.Control {...formElement.confirmAccountNumber}/>
+                <ErrorMessage formEle="confirmAccountNumber" />
               </Form.Group>
             </Col>
           </Form.Row>
-
+          
           <Form.Row>
             <Col>
-              <Form.Check
-                inline
-                label="Checking"
-                type="radio"
-                id="inline-radio-1"
-                name="accountType"
-                defaultChecked
-                value="checking"
-                ref={register}
-              />
-              <Form.Check
-                inline
-                label="Saving"
-                type="radio"
-                id="inline-radio-2"
-                name="accountType"
-                value="saving"
-                ref={register}
-              />
+              <Form.Check {...formElement.accountTypeChecking} defaultChecked />
+              <Form.Check {...formElement.accountTypeSaving} />
             </Col>
           </Form.Row>
           <hr />

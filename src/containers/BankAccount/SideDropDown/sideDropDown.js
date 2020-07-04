@@ -6,31 +6,35 @@ import { Dropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
+import { BankAccountContext } from '../bankAccount-context';
 import classes from './sideDropDown.module.scss';
 
-const BankPropToggle = React.forwardRef((props,ref) => {
+const BankPropToggle = React.forwardRef(({onClick, children, active},ref) => {
 
   const getActive = () =>{
-    return props.active ? classes.active : '';
+    return active ? classes.active : '';
   }
 
-  const handleClick = (e)=> {
+  const handleClick = (e) => {
     e.preventDefault();
-    props.onClick(e);
+    onClick(e);
   }
 
   return (
-    <button onClick={handleClick} className={classes.menuToggle + " " + getActive()}>
-      {props.children}
+    <button ref={ref} onClick={handleClick} className={classes.menuToggle + " " + getActive()}>
+      {children}
     </button>
   )
 })
 
  const SideDropDown = (props) => {
   const [isShow, setShow] = useState(false);
+  const {keyItem} = props;
 
-  const handleToggle = () => {
-    setShow(prevShow => !prevShow);
+  const { delBank } = useContext(BankAccountContext);
+
+  const handleToggle = (isOpen) => {
+    setShow(isOpen);
   }
 
   return (
@@ -42,7 +46,7 @@ const BankPropToggle = React.forwardRef((props,ref) => {
       <Dropdown.Menu >
         <Dropdown.Item href="#/action-1"><span className={classes.danger}>!&nbsp;</span>Verify</Dropdown.Item>
         <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-        <Dropdown.Item onClick={()=>{console.log('del clicked')}}>Delete</Dropdown.Item>
+        <Dropdown.Item onClick={()=>{delBank(keyItem)}}>Delete</Dropdown.Item>
         <Dropdown.Item href="#/action-4">Make a Payment</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

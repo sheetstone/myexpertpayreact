@@ -33,11 +33,11 @@ function labelVerification() {
 }
 
 export default function BankItem(props) {
-  const { bankitem } = props
+  const { bankitem, keyItem } = props
   return (
     <div className={classes.bankCard}>
       <div className={classes.bankName}>{bankitem.name}</div>
-      <SideDropDown />
+      <SideDropDown keyItem={keyItem} />
       <div className={classes.bankType}>{bankitem.type}</div>
       <div className={classes.bankNum}>{ formatBankNumber(bankitem.accountnum) }</div>
       <div>{(bankitem.verified) ? labelActive() : labelVerification()}</div>
