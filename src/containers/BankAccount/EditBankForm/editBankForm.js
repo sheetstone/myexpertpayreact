@@ -11,7 +11,8 @@ import validRoutin from 'utils/validRoutin';
 import * as yup from 'yup';
 import messages from '../messages';
 
-import classes from './editBankForm.module.scss';
+import RequiredStar from 'components/Form/RequiredStar/requiredStar';
+import ErrorMessage from 'components/Form/ErrorMessage/errorMessage';
 
 yup.addMethod(yup.string, 'isRounting', validRoutin);
 
@@ -112,26 +113,13 @@ export default function EditBankAccount(props) {
     });
   };
 
-  const RequiredStar = () => <span className={classes.required} aria-label="required">&nbsp; * </span>
-
-  const ErrorMessage = (p) => {
-    if(errors[p.formEle]){
-     return (
-        <Form.Control.Feedback type="invalid">
-            {errors[p.formEle].message}
-        </Form.Control.Feedback>
-      )
-    }
-    return null;
-  }
-
   //console.log(formState);
   return (
     <Modal show={props.show} onHide={props.onHide}>
       <Form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
         <Modal.Header closeButton>
           <Modal.Title>
-            <FormattedMessage {...messages.addBankTitle} />
+            <FormattedMessage {...messages.addBankTitle}/>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -143,7 +131,7 @@ export default function EditBankAccount(props) {
                   <RequiredStar />
                 </Form.Label>
                 <Form.Control {...formElement.rountinNumber}/>
-                <ErrorMessage formEle="rountingNumber" />
+                <ErrorMessage formEle="rountingNumber" errors={errors}/>
               </Form.Group>
             </Col>
           </Form.Row>
@@ -156,7 +144,7 @@ export default function EditBankAccount(props) {
                   <RequiredStar />
                 </Form.Label>
                 <Form.Control {...formElement.accountNumber} />
-                <ErrorMessage formEle="accountNumber" />
+                <ErrorMessage formEle="accountNumber"  errors={errors} />
               </Form.Group>
             </Col>
             <Col>
@@ -166,7 +154,7 @@ export default function EditBankAccount(props) {
                   <RequiredStar />
                 </Form.Label>
                 <Form.Control {...formElement.confirmAccountNumber}/>
-                <ErrorMessage formEle="confirmAccountNumber" />
+                <ErrorMessage formEle="confirmAccountNumber"  errors={errors}/>
               </Form.Group>
             </Col>
           </Form.Row>

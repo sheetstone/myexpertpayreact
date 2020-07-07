@@ -32,7 +32,6 @@ export default function App() {
         {/*<Route path="/caseinfo" component={CaseInfo} />
         <Route path="/payment" component={Payment} />
         <Route path="/" component={NotFoundPage} />
-        <Footer />
         */}
       </Switch>
       <Footer />

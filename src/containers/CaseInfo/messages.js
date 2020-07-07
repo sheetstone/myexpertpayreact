@@ -5,7 +5,7 @@
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'myexpertpay.containers.BankAccount';
+export const scope = 'myexpertpay.containers.caseinfo';
 
 export default defineMessages({
   header: {
