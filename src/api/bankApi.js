@@ -21,6 +21,9 @@ export async function addBank(data) {
   return post('banks.json', bankData);
 }
 
+export async function updateBank(key, data) {
+  return patch(`banks/${key}.json`, data);
+}
 function get(url) {
   return fetch(baseUrl + url).then(onSuccess);
 }
@@ -31,10 +34,7 @@ function del(url) {
   }).then(onSuccess);
 }
 
-
 function post(url, data) {
-  console.log("inbankapi", data)
-
   // Post the wrapped data to server
   return fetch(baseUrl + url, {
     method: 'POST',
@@ -43,6 +43,17 @@ function post(url, data) {
       "Content-type": "application/json; charset=UTF-8"
     }
   })
-  .then(response => response.json())
-  .then(json => console.log(json));
+  .then(onSuccess)
+  .then(json => console.log("Bank API Post", json));
+}
+
+function patch(url, data) {
+  return fetch(baseUrl + url, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  }).then(onSuccess)
+  .then(json => console.log("Bank API Patch",json));
 }

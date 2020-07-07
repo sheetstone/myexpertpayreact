@@ -12,7 +12,7 @@ function Footer() {
     <footer className={classes.footer}>
       <Container>
         <Row className="justify-content-between">
-          <section>
+          <section className={classes.Text}>
             <FormattedMessage {...messages.licenseMessage} />
           </section>
           <section>

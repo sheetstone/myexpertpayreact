@@ -10,7 +10,7 @@ export const scope = 'myexpertpay.containers.BankAccount';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'Bank Accounts',
+    defaultMessage: 'Case Info',
   },
   scaffoldingHeader: {
     id: `${scope}.scaffolding.header`,

@@ -29,13 +29,16 @@ const BankPropToggle = React.forwardRef(({onClick, children, active},ref) => {
 
  const SideDropDown = (props) => {
   const [isShow, setShow] = useState(false);
-  const {keyItem} = props;
+  const {keyItem, bankItem } = props;
 
-  const { delBank } = useContext(BankAccountContext);
+  const { delBank, verifyBank } = useContext(BankAccountContext);
 
   const handleToggle = (isOpen) => {
     setShow(isOpen);
   }
+
+  
+  const isVerified = bankItem && bankItem.verified;
 
   return (
     <Dropdown onToggle={handleToggle} className={classes.sideMenu} id={`dropdown${Math.random()}`}>
@@ -44,8 +47,11 @@ const BankPropToggle = React.forwardRef(({onClick, children, active},ref) => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu >
-        <Dropdown.Item href="#/action-1"><span className={classes.danger}>!&nbsp;</span>Verify</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
+        {!isVerified?
+          <Dropdown.Item onClick={()=>{verifyBank(keyItem)}}><span className={classes.danger}>!&nbsp;</span>Verify</Dropdown.Item>:
+          null
+        }
+        {/*<Dropdown.Item onClick={()=>{verifyBank(keyItem)}}>Edit</Dropdown.Item>*/}
         <Dropdown.Item onClick={()=>{delBank(keyItem)}}>Delete</Dropdown.Item>
         <Dropdown.Item href="#/action-4">Make a Payment</Dropdown.Item>
       </Dropdown.Menu>

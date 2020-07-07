@@ -5,15 +5,15 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Container } from 'react-bootstrap';
-import style from './styles/style.scss';
+import classes from './caseinfo.module.scss';
 
 import messages from './messages';
 
 export default function CaseInfo() {
   return (
-    <article className={style.bankaccountbg}>
+    <article className={classes.Caseinfo}>
       <Helmet>
-        <title>Bank Account</title>
+        <title>Case Info</title>
         <meta name="description" content="My Expertpay" />
       </Helmet>
       <Container>

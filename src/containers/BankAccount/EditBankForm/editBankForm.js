@@ -1,7 +1,7 @@
 /*
  * Add/Edit Bank List
  */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
@@ -23,13 +23,16 @@ const schema = yup.object().shape({
   accountNumber: yup
     .string()
     .required('Account Number is required')
-    .min(4, 'Account Number is invalid')
-    .max(17, 'Account Number is invalid'),
+    .min(4, 'Account Number is too short')
+    .max(17, 'Account Number is long'),
   confirmAccountNumber: yup
     .string()
     .required('Account Number is required')
-    .min(4, 'Account Number is invalid')
-    .max(17, 'Account Number is invalid'),
+    .min(4, 'Account Number is too short')
+    .max(17, 'Account Number is too long')
+    .test('passwords-match', 'AccountNumber should match', function(value){
+      return this.parent.accountNumber === value;
+    }),
 });
 
 export default function EditBankAccount(props) {
@@ -38,9 +41,14 @@ export default function EditBankAccount(props) {
     handleSubmit,
     errors,
     formState,
+    reset
   } = useForm({
     mode: 'onBlur',
+    reValidateMode: 'onChange',
     resolver: yupResolver(schema),
+    criteriaMode: "firstErrorDetected",
+    shouldFocusError: true,
+    shouldUnregister: false,
   });
 
   const formElement = {
@@ -86,9 +94,17 @@ export default function EditBankAccount(props) {
       label: "Saving"
     }
   }
+ 
+  const {show} = props;
+  useEffect(()=>{
+    reset({
+      rountinNumber: '',
+      accountNumber: '',
+      confirmAccountNumber: ''
+    });
+  },[show, reset]);
 
   const onSubmit = data => {
-  //await triggerValidation();
     console.log("Submitting:" + JSON.stringify(data));
     addBank(data).then(res => {
       props.reloadState();
@@ -98,17 +114,18 @@ export default function EditBankAccount(props) {
 
   const RequiredStar = () => <span className={classes.required} aria-label="required">&nbsp; * </span>
 
-  const ErrorMessage = (props) => {
-    if(errors[props.formEle]){
+  const ErrorMessage = (p) => {
+    if(errors[p.formEle]){
      return (
         <Form.Control.Feedback type="invalid">
-            {errors[props.formEle].message}
+            {errors[p.formEle].message}
         </Form.Control.Feedback>
       )
     }
     return null;
   }
 
+  //console.log(formState);
   return (
     <Modal show={props.show} onHide={props.onHide}>
       <Form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>

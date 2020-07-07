@@ -12,8 +12,7 @@ import EditBankAccount from './EditBankForm/editBankForm';
 const BankAccountContainer = (props) => {
     const [isLoading, setIsLoading] = useState(true);
 
-    const { bankData, 
-            showEditBank, 
+    const { showEditBank, 
             toggleEditBank, 
             reloadBank} = useContext(BankAccountContext);
 
@@ -32,7 +31,7 @@ const BankAccountContainer = (props) => {
             </Button>
             <hr />
             {isLoading && <LoadingIndicator />}
-            {!isLoading && <BankList bankData={bankData} />}
+            {!isLoading && <BankList />}
             <EditBankAccount show={showEditBank} onHide={() => toggleEditBank(false)} reloadState={reloadBank} />
         </>
     )

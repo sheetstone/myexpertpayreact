@@ -1,13 +1,14 @@
 /*
  * Bank List
  */
-import React from 'react';
+import React,{useContext} from 'react';
 import { Row, Col } from 'react-bootstrap';
 
+import { BankAccountContext } from '../bankAccount-context';
 import BankItem from '../BankItem/bankItem';
 
 export default function BankList(props) {
-  const { bankData } = props;
+  const { bankData } = useContext(BankAccountContext);
   let bankList = [];
 
   if (bankData === null) {
