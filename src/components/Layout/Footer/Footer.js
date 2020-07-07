@@ -18,7 +18,7 @@ function Footer() {
           <section>
             {/*<LocaleToggle />*/}
           </section>
-          <section>
+          <section className={classes.Text}>
             <FormattedMessage
               {...messages.authorMessage}
               values={{

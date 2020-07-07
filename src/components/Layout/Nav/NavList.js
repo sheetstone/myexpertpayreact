@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 
@@ -13,24 +13,24 @@ function NavList() {
       className={classes.Navspace + ' justify-content-between'}
     >
       <Nav.Item>
-        <Link to="/bankaccount" className={classes.Navlink + " nav-link"}>
+        <NavLink to="/bankaccount" className={classes.Navlink + " nav-link"} activeClassName={classes.active}>
           <FormattedMessage {...messages.bankAccount} />
-        </Link>
+        </NavLink>
       </Nav.Item>
       <Nav.Item>
-        <Link to="/caseinfo" className={classes.Navlink + " nav-link"}>
+        <NavLink to="/caseinfo" className={classes.Navlink + " nav-link"} activeClassName={classes.active}>
           <FormattedMessage {...messages.caseInfo} />
-        </Link>
+        </NavLink>
       </Nav.Item>
       <Nav.Item>
-        <Link to="/recipients" className={classes.Navlink + " nav-link"}>
+        <NavLink to="/recipients" className={classes.Navlink + " nav-link"} activeClassName={classes.active}>
           <FormattedMessage {...messages.recipients} />
-        </Link>
+        </NavLink>
       </Nav.Item>
       <Nav.Item>
-        <Link to="/payment" className={classes.Navlink + " nav-link"}>
+        <NavLink to="/payment" className={classes.Navlink + " nav-link"} activeClassName={classes.active}>
           <FormattedMessage {...messages.payment} />   
-        </Link>
+        </NavLink>
       </Nav.Item>
     </Nav>
   );
