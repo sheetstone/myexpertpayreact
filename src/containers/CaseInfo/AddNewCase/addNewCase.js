@@ -19,7 +19,7 @@ yup.addMethod(yup.string, 'isCaseNumber', validCaseNumber)
 const schema = yup.object().shape({
   caseNumber: yup
     .string()
-    .required('Rounting Number is required')
+    .required('Case Number is required')
     .min(6, 'Case Number is too short')
     .max(13, 'Case Number is too long')
     .test('isCaseNumber', 'Not a valid Case Number', validCaseNumber),
@@ -48,19 +48,15 @@ const AddNewCase = props => {
     },
     ncpName: {
       type: 'text',
-      name: 'ncpname',
+      name: 'ncpName',
       ref: register,
       placeholder: 'NCP Name',
-      isValid: formState.touched.ncpName && !errors.ncpName,
-      isInvalid: formState.touched.ncpName && errors.ncpName
     },
     childName: {
       type: 'text',
-      name: 'childName',
+      name: 'childname',
       ref: register,
       placeholder: 'Child Name',
-      isValid: formState.touched.childName && !errors.childName,
-      isInvalid: formState.touched.childName && errors.childName
     }
   }
 
@@ -71,25 +67,23 @@ const AddNewCase = props => {
         <meta name='description' content='My Expertpay' />
       </Helmet>
       <Row>
-        <Col>
+        <Col xs={6}>
           <Form.Group controlId='caseNumber'>
             <Form.Control {...formElement.caseNumber} />
             <ErrorMessage formEle='caseNumber' errors={errors} />
           </Form.Group>
           <Form.Group controlId='ncpName'>
             <Form.Control {...formElement.ncpName} />
-            <ErrorMessage formEle='ncpName' errors={errors} />
+            <ErrorMessage formEle='ncpname' errors={errors} />
           </Form.Group>
 
           <Form.Group controlId='childName'>
             <Form.Control {...formElement.childName} />
             <ErrorMessage formEle='childName' errors={errors} />
           </Form.Group>
-        </Col>
-        <Col>
           <Button variant='primary'>Save</Button>
           <Button variant='link'>Cancel</Button>
-        </Col>
+        </Col> 
       </Row>
     </>
   )
