@@ -1,15 +1,14 @@
 /*
  * Add New Cases
  */
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers'
 import * as yup from 'yup'
 
-import { Container, Row, Col, Button, Form } from 'react-bootstrap'
+import { Row, Col, Button, Form } from 'react-bootstrap'
 
-import RequiredStar from 'components/Form/RequiredStar/requiredStar'
 import ErrorMessage from 'components/Form/ErrorMessage/errorMessage'
 import validCaseNumber from 'utils/validCaseNumber'
 import classes from './addNewCase.module.scss'
@@ -27,6 +26,25 @@ const schema = yup.object().shape({
   childName: yup.string()
 })
 
+const CaseInput = ({objkey, value, errors, addChild, removeChild}) => {
+  if (objkey === 'childName'){
+    return (
+      <Form.Group controlId={objkey} className={classes.indent}>
+        <Form.Control {...value} />
+        <button onClick={addChild}>+</button>
+        <button onClick={removeChild}>-</button>
+        <ErrorMessage formEle={objkey} errors={errors} />
+      </Form.Group>
+    )
+  }
+  return ( 
+  <Form.Group controlId={objkey}>
+    <Form.Control {...value} />
+    <ErrorMessage formEle={objkey} errors={errors} />
+  </Form.Group>
+  )
+}
+
 const AddNewCase = props => {
   const { register, handleSubmit, errors, formState, reset } = useForm({
     mode: 'onBlur',
@@ -37,7 +55,7 @@ const AddNewCase = props => {
     shouldUnregister: false
   })
 
-  const formElement = {
+  const [ formElement, setFormElement ] = useState({
     caseNumber: {
       type: 'text',
       name: 'caseNumber',
@@ -51,14 +69,60 @@ const AddNewCase = props => {
       name: 'ncpName',
       ref: register,
       placeholder: 'NCP Name',
-    },
-    childName: {
+    }, 
+    childName: [{
       type: 'text',
       name: 'childname',
       ref: register,
       placeholder: 'Child Name',
-    }
+    }]
+  });
+
+  const addChildHandler = (e) => {
+    setFormElement(prevEle => {
+      const children = prevEle.childName;
+      children.push({
+        type: 'text',
+        name: 'childname',
+        ref: register,
+        placeholder: 'Child Name',
+      });
+      prevEle.childName = children;
+      return {...prevEle};
+    })
+  };
+
+  const removeChildHandler = (e, index) => {
+    setFormElement(prevEle => {
+      const children = prevEle.childName;
+      if(children.length === 1){
+        return {...prevEle};
+      }
+      children.splice(index, 1);
+      prevEle.childName = children;
+      return {...prevEle};
+    })
   }
+
+  const formElementNode = () => {
+    console.log("in addNew Case:formElementNode", formElement)
+    if (formElement === undefined) return null;
+    const formArray = [];
+    for (const [objkey, value] of Object.entries(formElement)) {
+      if (objkey === 'childName'){
+        formArray.push(value.map((item, i)=>(
+          <CaseInput objkey={objkey} value={item} errors={errors} key={objkey+i} addChild={addChildHandler} removeChild={()=>removeChildHandler(i)}/>
+        )))
+      }else{
+        formArray.push(
+          <CaseInput objkey={objkey} value={value} errors={errors} key={objkey} />
+        )
+      }
+    }
+    return formArray;
+  }
+
+
 
   return (
     <>
@@ -68,22 +132,10 @@ const AddNewCase = props => {
       </Helmet>
       <Row>
         <Col xs={6}>
-          <Form.Group controlId='caseNumber'>
-            <Form.Control {...formElement.caseNumber} />
-            <ErrorMessage formEle='caseNumber' errors={errors} />
-          </Form.Group>
-          <Form.Group controlId='ncpName'>
-            <Form.Control {...formElement.ncpName} />
-            <ErrorMessage formEle='ncpname' errors={errors} />
-          </Form.Group>
-
-          <Form.Group controlId='childName'>
-            <Form.Control {...formElement.childName} />
-            <ErrorMessage formEle='childName' errors={errors} />
-          </Form.Group>
-          <Button variant='primary'>Save</Button>
+          {formElementNode()}
+          <Button variant='primary' onClick={handleSubmit}>Save</Button>
           <Button variant='link'>Cancel</Button>
-        </Col> 
+        </Col>
       </Row>
     </>
   )

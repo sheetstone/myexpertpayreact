@@ -51,7 +51,9 @@ const BankPropToggle = React.forwardRef(({onClick, children, active},ref) => {
           <Dropdown.Item onClick={()=>{verifyBank(keyItem)}}><span className={classes.danger}>!&nbsp;</span>Verify</Dropdown.Item>:
           null
         }
-        {/*<Dropdown.Item onClick={()=>{verifyBank(keyItem)}}>Edit</Dropdown.Item>*/}
+        {/*
+        // TODO: Dont need edit function. user can delete bank, and add new one.
+        <Dropdown.Item onClick={()=>{verifyBank(keyItem)}}>Edit</Dropdown.Item>*/}
         <Dropdown.Item onClick={()=>{delBank(keyItem)}}>Delete</Dropdown.Item>
         <Dropdown.Item href="#/action-4">Make a Payment</Dropdown.Item>
       </Dropdown.Menu>
