@@ -12,7 +12,7 @@ import * as yup from 'yup';
 import messages from '../messages';
 
 import RequiredStar from 'components/Form/RequiredStar/requiredStar';
-import ErrorMessage from 'components/Form/ErrorMessage/errorMessage';
+import FormValidationError from 'components/Form/formValidationError/formValidationError';
 
 yup.addMethod(yup.string, 'isRounting', validRoutin);
 
@@ -131,7 +131,7 @@ export default function EditBankAccount(props) {
                   <RequiredStar />
                 </Form.Label>
                 <Form.Control {...formElement.rountinNumber}/>
-                <ErrorMessage formEle="rountingNumber" errors={errors}/>
+                <FormValidationError formEle="rountingNumber" errors={errors}/>
               </Form.Group>
             </Col>
           </Form.Row>
@@ -144,7 +144,7 @@ export default function EditBankAccount(props) {
                   <RequiredStar />
                 </Form.Label>
                 <Form.Control {...formElement.accountNumber} />
-                <ErrorMessage formEle="accountNumber"  errors={errors} />
+                <FormValidationError formEle="accountNumber"  errors={errors} />
               </Form.Group>
             </Col>
             <Col>
@@ -154,7 +154,7 @@ export default function EditBankAccount(props) {
                   <RequiredStar />
                 </Form.Label>
                 <Form.Control {...formElement.confirmAccountNumber}/>
-                <ErrorMessage formEle="confirmAccountNumber"  errors={errors}/>
+                <FormValidationError formEle="confirmAccountNumber"  errors={errors}/>
               </Form.Group>
             </Col>
           </Form.Row>

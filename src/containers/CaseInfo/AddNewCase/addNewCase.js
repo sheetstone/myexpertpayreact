@@ -5,13 +5,17 @@ import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers'
+import { Link } from 'react-router-dom';
 import * as yup from 'yup'
 
 import { Row, Col, Button, Form } from 'react-bootstrap'
 
-import ErrorMessage from 'components/Form/ErrorMessage/errorMessage'
+import FormValidationError from 'components/Form/formValidationError/formValidationError'
 import validCaseNumber from 'utils/validCaseNumber'
 import classes from './addNewCase.module.scss'
+import Popoverbox from 'components/UI/popover/Popover'
+import { addCase, updateCase } from 'api/caseApi.js'
+import equal from 'deep-equal';
 
 yup.addMethod(yup.string, 'isCaseNumber', validCaseNumber)
 
@@ -20,109 +24,158 @@ const schema = yup.object().shape({
     .string()
     .required('Case Number is required')
     .min(6, 'Case Number is too short')
-    .max(13, 'Case Number is too long')
+    .max(15, 'Case Number is too long')
     .test('isCaseNumber', 'Not a valid Case Number', validCaseNumber),
   ncpName: yup.string(),
   childName: yup.string()
 })
 
-const CaseInput = ({objkey, value, errors, addChild, removeChild}) => {
-  if (objkey === 'childName'){
+const CaseInput = ({objkey, value, errors, addChild, removeChild, isTail, isChild}) => {
+  if (isChild){
     return (
-      <Form.Group controlId={objkey} className={classes.indent}>
-        <Form.Control {...value} />
-        <button onClick={addChild}>+</button>
-        <button onClick={removeChild}>-</button>
-        <ErrorMessage formEle={objkey} errors={errors} />
+      <Form.Group controlId={objkey} className={isTail?classes.indentTail:classes.indent}>
+        <Form.Control {...value} name={objkey}/>
+        <button onClick={addChild} className={classes.addBtn} title="Add child"></button>
+        <button onClick={removeChild} className={classes.removeBtn} title="Delete"></button>
+        <FormValidationError formEle={objkey} errors={errors} />
       </Form.Group>
     )
   }
   return ( 
   <Form.Group controlId={objkey}>
-    <Form.Control {...value} />
-    <ErrorMessage formEle={objkey} errors={errors} />
+    <Form.Control {...value} /> 
+    <FormValidationError formEle={objkey} errors={errors} />
+    {(value.tooltip && !value.isValid)? <Popoverbox tooltip={value.tooltip} isValid={value.isValid} /> :null}
   </Form.Group>
   )
 }
 
 const AddNewCase = props => {
-  const { register, handleSubmit, errors, formState, reset } = useForm({
+  const updateKey = props.location.state && props.location.state.key;
+  const initalState = props.location.state && props.location.state.case;
+
+
+  const { register, handleSubmit, errors, formState } = useForm({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     resolver: yupResolver(schema),
     criteriaMode: 'firstErrorDetected',
     shouldFocusError: true,
     shouldUnregister: false
-  })
+  });
+  
+  const caseNumber = {
+    type: 'text',
+    name: 'caseNumber',
+    ref: register,
+    placeholder: 'Case Number',
+    isValid: formState.touched.caseNumber && !errors.caseNumber,
+    isInvalid: formState.touched.caseNumber && errors.caseNumber,
+    defaultValue: initalState && initalState.caseNumber,
+    disabled: initalState && true,
+    tooltip: {
+      title: 'Case Number',
+      content: <>
+        You can find your case number from the back of your case card:
+        <li>Case number start with 0-5 Char</li>
+        <li>follow with a dash,</li>
+        <li>follow with 4-10 numbers,</li>
+        <li>and the length of entire case number is 11 characters or less.</li>
+      </>
+    }
+  }
 
-  const [ formElement, setFormElement ] = useState({
-    caseNumber: {
-      type: 'text',
-      name: 'caseNumber',
-      ref: register,
-      placeholder: 'Case Number',
-      isValid: formState.touched.caseNumber && !errors.caseNumber,
-      isInvalid: formState.touched.caseNumber && errors.caseNumber
-    },
-    ncpName: {
-      type: 'text',
-      name: 'ncpName',
-      ref: register,
-      placeholder: 'NCP Name',
-    }, 
-    childName: [{
+  const ncpName = {
+    type: 'text',
+    name: 'ncpName',
+    ref: register,
+    defaultValue: initalState && initalState.ncpName,
+    placeholder: 'NCP Name',
+  }
+
+  const initalChildrenList = initalState? initalState.children.map(child=>{
+    return {
       type: 'text',
       name: 'childname',
       ref: register,
+      defaultValue: child, 
       placeholder: 'Child Name',
-    }]
-  });
+    }
+  }):[{
+    type: 'text',
+    name: 'childname',
+    ref: register,
+    placeholder: 'Child Name',
+}]
+
+
+  const [ childrenName, setChildrenName ] = useState(initalChildrenList);
 
   const addChildHandler = (e) => {
-    setFormElement(prevEle => {
-      const children = prevEle.childName;
-      children.push({
+    setChildrenName(prevEle => {
+      return prevEle.concat({
         type: 'text',
         name: 'childname',
         ref: register,
         placeholder: 'Child Name',
       });
-      prevEle.childName = children;
-      return {...prevEle};
     })
   };
 
   const removeChildHandler = (e, index) => {
-    setFormElement(prevEle => {
-      const children = prevEle.childName;
-      if(children.length === 1){
-        return {...prevEle};
+    setChildrenName(prevEle => {
+      if(prevEle.length === 1){
+        return prevEle;
       }
-      children.splice(index, 1);
-      prevEle.childName = children;
-      return {...prevEle};
+      prevEle.splice(index, 1);
+      return [...prevEle];
     })
   }
 
   const formElementNode = () => {
-    console.log("in addNew Case:formElementNode", formElement)
-    if (formElement === undefined) return null;
     const formArray = [];
-    for (const [objkey, value] of Object.entries(formElement)) {
-      if (objkey === 'childName'){
-        formArray.push(value.map((item, i)=>(
-          <CaseInput objkey={objkey} value={item} errors={errors} key={objkey+i} addChild={addChildHandler} removeChild={()=>removeChildHandler(i)}/>
-        )))
-      }else{
-        formArray.push(
-          <CaseInput objkey={objkey} value={value} errors={errors} key={objkey} />
-        )
-      }
-    }
+    formArray.push(<CaseInput objkey='caseNumber' value={caseNumber} errors={errors} key='caseNumber' />);
+    formArray.push(<CaseInput objkey='ncpName' value={ncpName} errors={errors} key='ncpName' />)
+    formArray.push(childrenName.map((item, i, arr)=>{
+      const kidId = `childName-${i}`;
+      return (
+        <CaseInput objkey={kidId} isChild isTail={(arr.length-1)===i} value={item} errors={errors} key={kidId} addChild={addChildHandler} removeChild={()=>removeChildHandler(i)}/>
+      )
+    }))
+
     return formArray;
   }
 
+  const onSubmit = data => {
+    const result = {};
+    result.children = [];
+    for (const [key, value] of Object.entries(data)){
+      if(key.includes('childName')){
+        result.children.push(value);
+      }else{
+        result[key] = value
+      }
+    }
 
+    if (updateKey) {
+      if (equal(result, initalState)) {
+        console.log('no need update database');
+        props.history.push('/caseinfo');
+      }else{
+        updateCase(updateKey, result).then(res => {
+          // TODO: add a modal to comfirmation
+          props.history.push('/caseinfo');
+        })
+      }
+    }else{
+      console.log('isADDing:', result);
+      addCase(result).then(res => {
+        //console.log('Add successful',res);
+        // TODO: add a modal to comfirmation
+      });
+    }
+
+  }
 
   return (
     <>
@@ -133,8 +186,10 @@ const AddNewCase = props => {
       <Row>
         <Col xs={6}>
           {formElementNode()}
-          <Button variant='primary' onClick={handleSubmit}>Save</Button>
-          <Button variant='link'>Cancel</Button>
+          <Button variant='primary' onClick={handleSubmit(onSubmit)}>Save</Button>
+          <Link to='/caseinfo'>
+            <Button variant='link'>Cancel</Button>
+          </Link>
         </Col>
       </Row>
     </>

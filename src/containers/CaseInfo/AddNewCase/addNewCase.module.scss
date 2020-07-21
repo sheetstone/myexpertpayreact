@@ -12,6 +12,33 @@
         display: block;
         content: ' ';
         width: 2em;
+        height: 40px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border-left: 1px dashed darken(#ced4da, 2);
+    }
+    &:before{
+        display: block;
+        content: ' ';
+        width: 2em;
+        height: 21px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border-bottom: 1px dashed darken(#ced4da, 2);
+    }
+}
+
+
+.indentTail{
+    padding-left: 2em;
+    position: relative;
+
+    &:after{
+        display: block;
+        content: ' ';
+        width: 2em;
         height: 21px;
         position: absolute;
         top: 0px;
@@ -19,4 +46,50 @@
         border-left: 1px dashed darken(#ced4da, 2);
         border-bottom: 1px dashed #ced4da;
     }
+
+    &:hover .addBtn, &:hover .removeBtn{
+        display: unset;
+    }
+
+    input:focus~.addBtn, input:focus~.removeBtn{
+        display: unset;
+    }
 }
+
+.addBtn {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Ctitle%3EPlug%3C/title%3E%3Crect id='hoz' height='2' width='20' y='11' x='2' stroke-width='0' fill='%23c2c2c2'/%3E%3Crect id='ver' height='20' width='2' y='2' x='11' stroke-width='0' fill='%23c2c2c2'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 1rem 1rem;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center center;
+    border: 0 none;
+    position: absolute;
+    right: 2em;
+    top: 0;
+    width: 36px;
+    height:36px;
+    display: none;
+    &:hover, &:active {
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Ctitle%3EPlug%3C/title%3E%3Crect id='hoz' height='2' width='20' y='11' x='2' stroke-width='0' fill='%23999999'/%3E%3Crect id='ver' height='20' width='2' y='2' x='11' stroke-width='0' fill='%23999999'/%3E%3C/g%3E%3C/svg%3E");
+        outline: none;
+    }
+}
+.removeBtn {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Ctitle%3ELayer 1%3C/title%3E%3Crect id='hoz' height='2' width='20' y='11' x='2' stroke-width='0' fill='%23c2c2c2'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 1rem 1rem;
+    background-repeat: no-repeat;    
+    background-color: transparent;
+    background-position: center center;
+    border: 0 none;
+    position: absolute;
+    right: 0.2em;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    display: none;
+    &:hover, &:active {
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Ctitle%3ELayer 1%3C/title%3E%3Crect id='hoz' height='2' width='20' y='11' x='2' stroke-width='0' fill='%23999999'/%3E%3C/g%3E%3C/svg%3E");
+        outline: none;
+    }
+}
+

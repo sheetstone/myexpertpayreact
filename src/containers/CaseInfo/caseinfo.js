@@ -28,6 +28,7 @@ export default function CaseInfo(props) {
         <Switch>
           <Route exact path={`${match.url}`} component={CasesList} />
           <Route path={`${match.url}/addnewcase`} component={AddNewCase} />
+          <Route path={`${match.url}/editcase`} component={AddNewCase} />
         </Switch>
       </Container>
     </article>

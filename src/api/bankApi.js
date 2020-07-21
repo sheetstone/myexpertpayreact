@@ -1,6 +1,6 @@
 import { baseUrl } from './baseUrl';
 import { onSuccess } from './baseApi';
-import md5 from 'js-md5';
+// import md5 from 'js-md5';
 import resolveBankName from './resolveBankName';
 
 export async function getBanks() {

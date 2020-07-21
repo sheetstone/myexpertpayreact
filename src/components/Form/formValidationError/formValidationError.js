@@ -1,10 +1,10 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 
-import classes from './errorMessage.module.scss';
+import classes from './formValidationError.module.scss';
 
 
-const ErrorMessage = (props) => {
+const FormValidationError = (props) => {
     const {errors, formEle} = props
     if(errors[formEle]){
      return (
@@ -16,4 +16,4 @@ const ErrorMessage = (props) => {
     return null;
   }
 
-export default ErrorMessage
+export default FormValidationError
