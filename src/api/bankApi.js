@@ -8,6 +8,9 @@ export async function getBanks() {
 }
 
 export async function deleteBank(id) {
+  if (id===null||id===''){
+    return;
+  }
   return del(`banks/${id}.json`);
 }
 

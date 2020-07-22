@@ -15,6 +15,7 @@ import validCaseNumber from 'utils/validCaseNumber'
 import classes from './addNewCase.module.scss'
 import Popoverbox from 'components/UI/popover/Popover'
 import { addCase, updateCase } from 'api/caseApi.js'
+import SuccessModal from './SuccessModal/successModal'
 import equal from 'deep-equal';
 
 yup.addMethod(yup.string, 'isCaseNumber', validCaseNumber)
@@ -54,8 +55,7 @@ const AddNewCase = props => {
   const updateKey = props.location.state && props.location.state.key;
   const initalState = props.location.state && props.location.state.case;
 
-
-  const { register, handleSubmit, errors, formState } = useForm({
+  const { register, handleSubmit, errors, formState, reset } = useForm({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     resolver: yupResolver(schema),
@@ -106,10 +106,10 @@ const AddNewCase = props => {
     name: 'childname',
     ref: register,
     placeholder: 'Child Name',
-}]
-
+  }]
 
   const [ childrenName, setChildrenName ] = useState(initalChildrenList);
+  const [ showSuccess, setShowSuccess ] = useState(false);
 
   const addChildHandler = (e) => {
     setChildrenName(prevEle => {
@@ -146,6 +146,16 @@ const AddNewCase = props => {
     return formArray;
   }
 
+  const gotoCaseInfo = () => {
+    props.history.push('/caseinfo');
+  }
+
+  const resetForm = () => {
+    reset();
+    setChildrenName(initalChildrenList);
+    setShowSuccess(false);
+  }
+
   const onSubmit = data => {
     const result = {};
     result.children = [];
@@ -158,20 +168,22 @@ const AddNewCase = props => {
     }
 
     if (updateKey) {
+      // Update Exist Case
       if (equal(result, initalState)) {
         console.log('no need update database');
-        props.history.push('/caseinfo');
+        gotoCaseInfo()
       }else{
         updateCase(updateKey, result).then(res => {
           // TODO: add a modal to comfirmation
-          props.history.push('/caseinfo');
+          gotoCaseInfo();
         })
       }
-    }else{
-      console.log('isADDing:', result);
+    } else {
+      // Add new case
       addCase(result).then(res => {
-        //console.log('Add successful',res);
+        // console.log('Add successful',res);
         // TODO: add a modal to comfirmation
+        setShowSuccess(true);
       });
     }
 
@@ -190,6 +202,8 @@ const AddNewCase = props => {
           <Link to='/caseinfo'>
             <Button variant='link'>Cancel</Button>
           </Link>
+
+          <SuccessModal show={showSuccess} noed={gotoCaseInfo} yesed={resetForm}/>
         </Col>
       </Row>
     </>

@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { deleteCase } from 'api/caseApi.js'
 import LoadingIndicator from 'components/UI/LoadingIndicator/LoadingIndicator';
+import Confirm from 'components/UI/Confirm/Confirm';
 
 import classes from './caseslist.module.scss';
 
@@ -21,13 +22,17 @@ const CasesList = props => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+      reload();
+  }, []);
+
+  const reload = () => {
     getCases().then(res => {
       setCases(res);
       setIsLoading(false);
     }).catch(err => {
       console.log(err)
     })
-  }, []);
+  }
 
   const casesListRow = [];
   const childColWidth = {
@@ -41,8 +46,10 @@ const CasesList = props => {
     });
   }
 
-  const onDeleteClicked = (key) => {
-    deleteCase(key);
+  const onDeleteClicked = async (key) => {
+    console.log('trying to delete', key)
+    await deleteCase(key);
+    await reload();
   }
 
   for (const [key, item] of Object.entries(cases)) {
@@ -60,7 +67,11 @@ const CasesList = props => {
         </td>
         <td>
           <Button variant="link" size="sm" onClick={e => onEditClicked(key, item, e)}>Edit</Button>
-          <Button variant="link" size="sm" onClick={e => onDeleteClicked(key)}>Delete</Button>
+          <Confirm title="Delete action Confirmation" description="Are you sure to delete this case?">
+            { confirm => (
+                <Button variant="link" size="sm" onClick={e => confirm(() => onDeleteClicked(key), e)}>Delete</Button>
+            )} 
+          </Confirm>
         </td>
       </tr>
     )
@@ -105,6 +116,7 @@ const CasesList = props => {
 
       {isLoading && <LoadingIndicator />}
       {!isLoading && <CasesListEle />}
+
     </article>
   )
 }

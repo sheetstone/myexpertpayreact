@@ -7,6 +7,9 @@ export async function getCases() {
 }
 
 export async function deleteCase(id) {
+  if (id===null||id===''){
+    return;
+  }
   return del(`cases/${id}.json`);
 }
 
