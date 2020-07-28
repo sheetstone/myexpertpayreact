@@ -1,7 +1,7 @@
 /*
  * Add New Cases
  */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers'
@@ -63,7 +63,7 @@ const AddNewCase = props => {
     shouldFocusError: true,
     shouldUnregister: false
   });
-  
+
   const caseNumber = {
     type: 'text',
     name: 'caseNumber',
@@ -137,7 +137,7 @@ const AddNewCase = props => {
     formArray.push(<CaseInput objkey='caseNumber' value={caseNumber} errors={errors} key='caseNumber' />);
     formArray.push(<CaseInput objkey='ncpName' value={ncpName} errors={errors} key='ncpName' />)
     formArray.push(childrenName.map((item, i, arr)=>{
-      const kidId = `childName-${i}`;
+      const kidId = `childName${i}`;
       return (
         <CaseInput objkey={kidId} isChild isTail={(arr.length-1)===i} value={item} errors={errors} key={kidId} addChild={addChildHandler} removeChild={()=>removeChildHandler(i)}/>
       )
@@ -151,9 +151,15 @@ const AddNewCase = props => {
   }
 
   const resetForm = () => {
-    reset();
     setChildrenName(initalChildrenList);
+    reset({
+      'caseNumber': '',
+      'ncpName': '',
+      'childName0': '',
+      'childName': ''
+    });
     setShowSuccess(false);
+    console.log(formState);
   }
 
   const onSubmit = data => {
@@ -186,8 +192,8 @@ const AddNewCase = props => {
         setShowSuccess(true);
       });
     }
-
   }
+
 
   return (
     <>
@@ -206,6 +212,7 @@ const AddNewCase = props => {
           <SuccessModal show={showSuccess} noed={gotoCaseInfo} yesed={resetForm}/>
         </Col>
       </Row>
+      <button onClick={resetForm} >reset</button>
     </>
   )
 }

@@ -36,7 +36,7 @@ const CasesList = props => {
 
   const casesListRow = [];
   const childColWidth = {
-    'width': '446px'
+    'width': '446px' //TODO: responsive design for this value.
   }
 
   const onEditClicked = (key, item, e) => {

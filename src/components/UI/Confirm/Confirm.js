@@ -30,7 +30,7 @@ const Confirm = props => {
         close();
     }
 
-    console.log(props);
+    //console.log(props);
     return (
         <>
             {props.children(open)}
