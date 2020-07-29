@@ -11,7 +11,7 @@ const Popoverbox = (props) => {
     return (    
         <>
             <OverlayTrigger
-                trigger="click"
+                trigger={['hover', 'focus']}
                 placement='right'
                 overlay={
                     <Popover id={'tooltip-' + tooltip.title}>
@@ -21,7 +21,7 @@ const Popoverbox = (props) => {
                         </Popover.Content>
                     </Popover>
                 }>
-                <button className={tooltipClass}></button>
+                <button className={tooltipClass} type="button"></button>
             </OverlayTrigger>
         </>)
 }
