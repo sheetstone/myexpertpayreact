@@ -1,56 +1,58 @@
 /*
  * Add New Cases
  */
-import React, { useState, useEffect } from 'react'
-import { Helmet } from 'react-helmet'
+import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 
-import { Row, Col, Table, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
-import { getCases } from 'api/caseApi.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { deleteCase } from 'api/caseApi.js'
-import LoadingIndicator from 'components/UI/LoadingIndicator/LoadingIndicator';
-import Confirm from 'components/UI/Confirm/Confirm';
+import { Row, Col, Table, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { getCases } from "api/caseApi.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { deleteCase } from "api/caseApi.js";
+import LoadingIndicator from "components/UI/LoadingIndicator/LoadingIndicator";
+import Confirm from "components/UI/Confirm/Confirm";
 
-import classes from './caseslist.module.scss';
+import classes from "./caseslist.module.scss";
 
-const header = ['Case Number', 'NCP Name', 'Children Name', 'Action'];
+const header = ["Case Number", "NCP Name", "Children Name", "Action"];
 
-const CasesList = props => {
+const CasesList = (props) => {
   const [cases, setCases] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-      reload();
+    reload();
   }, []);
 
   const reload = () => {
-    getCases().then(res => {
-      setCases(res);
-      setIsLoading(false);
-    }).catch(err => {
-      console.log(err)
-    })
-  }
+    getCases()
+      .then((res) => {
+        setCases(res);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const casesListRow = [];
   const childColWidth = {
-    'width': '446px' //TODO: responsive design for this value.
-  }
+    width: "446px", //TODO: responsive design for this value.
+  };
 
   const onEditClicked = (key, item, e) => {
-    props.history.push(props.match.url+"/editcase", {
+    props.history.push(props.match.url + "/editcase", {
       key: key,
-      case: item
+      case: item,
     });
-  }
+  };
 
   const onDeleteClicked = async (key) => {
-    console.log('trying to delete', key)
+    console.log("trying to delete", key);
     await deleteCase(key);
     await reload();
-  }
+  };
 
   for (const [key, item] of Object.entries(cases)) {
     const { caseNumber, ncpName, children } = item;
@@ -60,31 +62,45 @@ const CasesList = props => {
         <td>{ncpName}</td>
         <td className={classes.childrenCol}>
           <div className={classes.childrenWrap} style={childColWidth}>
-            {
-              children.join(', ')
-            }
+            {children.join(", ")}
           </div>
         </td>
         <td>
-          <Button variant="link" size="sm" onClick={e => onEditClicked(key, item, e)}>Edit</Button>
-          <Confirm title="Delete action Confirmation" description="Are you sure to delete this case?">
-            { confirm => (
-                <Button variant="link" size="sm" onClick={e => confirm(() => onDeleteClicked(key), e)}>Delete</Button>
-            )} 
+          <Button
+            variant="link"
+            size="sm"
+            onClick={(e) => onEditClicked(key, item, e)}
+          >
+            Edit
+          </Button>
+          <Confirm
+            title="Delete action Confirmation"
+            description="Are you sure to delete this case?"
+          >
+            {(confirm) => (
+              <Button
+                variant="link"
+                size="sm"
+                onClick={(e) => confirm(() => onDeleteClicked(key), e)}
+              >
+                Delete
+              </Button>
+            )}
           </Confirm>
         </td>
       </tr>
-    )
+    );
   }
 
   const CasesListEle = () => (
     <>
       <Row>
         <Col>
-          <Link to={ props.match.url + '/addnewcase' }>
+          <Link to={props.match.url + "/addnewcase"}>
             <Button variant="primary" size="md">
               <FontAwesomeIcon icon={faPlus} color="#ffffff" />
-          &nbsp;Add New case</Button>
+              &nbsp;Add New case
+            </Button>
           </Link>
         </Col>
       </Row>
@@ -99,11 +115,10 @@ const CasesList = props => {
                 ))}
               </tr>
             </thead>
-            <tbody>
-              {casesListRow}
-            </tbody>
+            <tbody>{casesListRow}</tbody>
           </Table>
-        </Col></Row>
+        </Col>
+      </Row>
     </>
   );
 
@@ -111,14 +126,13 @@ const CasesList = props => {
     <article className={classes.bankaccountbg}>
       <Helmet>
         <title>Case Info - Add new case</title>
-        <meta name='description' content='My Expertpay' />
+        <meta name="description" content="My Expertpay" />
       </Helmet>
 
       {isLoading && <LoadingIndicator />}
       {!isLoading && <CasesListEle />}
-
     </article>
-  )
-}
+  );
+};
 
-export default CasesList
+export default CasesList;

@@ -3,14 +3,14 @@
  *
  * This contains all the text for the navigation component.
  */
-import { defineMessages } from 'react-intl';
+import { defineMessages } from "react-intl";
 
-export const scope = 'myexpertpay.components.nav';
+export const scope = "myexpertpay.components.nav";
 
 export default defineMessages({
   bankAccount: {
     id: `${scope}.bankAccount`,
-    defaultMessage: 'Bank Account',
+    defaultMessage: "Bank Account",
   },
   caseInfo: {
     id: `${scope}.caseInfo`,
@@ -18,17 +18,14 @@ export default defineMessages({
   },
   recipients: {
     id: `${scope}.recipients`,
-    defaultMessage: 'Recipients'
+    defaultMessage: "Recipients",
   },
-  payment:{
+  payment: {
     id: `${scope}.payment`,
-    defaultMessage: 'Payment'
+    defaultMessage: "Payment",
   },
-  logo:{
+  logo: {
     id: `${scope}.logo`,
-    defaultMessage: 'My Expertpay logo'
-  }
+    defaultMessage: "My Expertpay logo",
+  },
 });
-
-
-

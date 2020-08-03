@@ -3,14 +3,14 @@
  *
  * This contains all the text for the FeaturePage component.
  */
-import { defineMessages } from 'react-intl';
+import { defineMessages } from "react-intl";
 
-export const scope = 'myexpertpay.containers.BankAccount';
+export const scope = "myexpertpay.containers.BankAccount";
 
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'Bank Accounts',
+    defaultMessage: "Bank Accounts",
   },
   scaffoldingHeader: {
     id: `${scope}.scaffoldingHeader`,
@@ -19,27 +19,27 @@ export default defineMessages({
   },
   addBankTitle: {
     id: `${scope}.addBankTitle`,
-    defaultMessage: 'Bank Accounts',
+    defaultMessage: "Bank Accounts",
   },
   addBankSubmit: {
     id: `${scope}.addBankSubmit`,
-    defaultMessage: 'Confirm & Complete',
+    defaultMessage: "Confirm & Complete",
   },
   addBankMessage: {
     id: `${scope}.addBankMessage`,
     defaultMessage:
-      'By add bank account, you accept the General Condition & Confidentiality Rules',
+      "By add bank account, you accept the General Condition & Confidentiality Rules",
   },
   accountNumber: {
     id: `${scope}.accountNumber`,
-    defaultMessage: 'Account Number',
+    defaultMessage: "Account Number",
   },
   accountNumberConfirmation: {
     id: `${scope}.accountNumberConfirmation`,
-    defaultMessage: 'Confirm Account',
+    defaultMessage: "Confirm Account",
   },
   rountingNumber: {
     id: `${scope}.rountingNumber`,
-    defaultMessage: 'Bank Routing Number',
+    defaultMessage: "Bank Routing Number",
   },
 });

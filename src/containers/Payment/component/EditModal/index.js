@@ -1,34 +1,34 @@
 /*
  * Add/Edit Bank List
  */
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import { useForm } from 'react-hook-form';
-import { Modal, Button, Form, Col } from 'react-bootstrap';
-import { addBank } from 'api/bankApi';
-import validRoutin from 'utils/validRoutin';
-import * as yup from 'yup';
-import messages from '../../messages';
+import React from "react";
+import { FormattedMessage } from "react-intl";
+import { useForm } from "react-hook-form";
+import { Modal, Button, Form, Col } from "react-bootstrap";
+import { addBank } from "api/bankApi";
+import validRoutin from "utils/validRoutin";
+import * as yup from "yup";
+import messages from "../../messages";
 
-import style from './styles/style.scss';
+import style from "./styles/style.scss";
 
-yup.addMethod(yup.string, 'isRounting', validRoutin);
+yup.addMethod(yup.string, "isRounting", validRoutin);
 
 const schema = yup.object().shape({
   rountingNumber: yup
     .string()
-    .required('Rounting Number is required')
-    .test('is-Rounting', 'Not a valid Rounting Number', validRoutin),
+    .required("Rounting Number is required")
+    .test("is-Rounting", "Not a valid Rounting Number", validRoutin),
   accountNumber: yup
     .string()
-    .required('Account Number is required')
-    .min(4, 'Account Number is invalid')
-    .max(17, 'Account Number is invalid'),
+    .required("Account Number is required")
+    .min(4, "Account Number is invalid")
+    .max(17, "Account Number is invalid"),
   confirmAccountNumber: yup
     .string()
-    .required('Account Number is required')
-    .min(4, 'Account Number is invalid')
-    .max(17, 'Account Number is invalid'),
+    .required("Account Number is required")
+    .min(4, "Account Number is invalid")
+    .max(17, "Account Number is invalid"),
 });
 
 export default function EditBankAccount(props) {
@@ -39,13 +39,13 @@ export default function EditBankAccount(props) {
     formState,
     triggerValidation,
   } = useForm({
-    mode: 'onBlur',
+    mode: "onBlur",
     validationSchema: schema,
   });
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     await triggerValidation();
-    console.log("Submitting:"+JSON.stringify(data));
+    console.log("Submitting:" + JSON.stringify(data));
     const newdata = await addBank(data);
     props.reloadState();
     props.onHide();

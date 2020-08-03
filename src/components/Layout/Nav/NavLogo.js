@@ -1,10 +1,10 @@
-import React from 'react';
-import { Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-import classes from './Nav.module.scss';
+import classes from "./Nav.module.scss";
 
-import Logoimage from '../../../assets/images/u4.png';
+import Logoimage from "../../../assets/images/u4.png";
 
 function NavLogo() {
   return (

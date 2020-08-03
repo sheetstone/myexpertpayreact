@@ -1,4 +1,4 @@
-@import '../../../globalStyle/variables';
+@import "../../../globalStyle/variables";
 
 .tabList {
   transform: translateY(1px);
@@ -14,7 +14,7 @@
     margin-right: 0.5em;
   }
 
-  &:hover{
+  &:hover {
     color: $primary;
   }
   &.active {
@@ -22,7 +22,7 @@
   }
 }
 
-.tabContent{
+.tabContent {
   background: white;
   border-top: 1px solid #cccccc;
 }

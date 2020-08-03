@@ -4,14 +4,14 @@
  * This is the page we show when the user visits a url that doesn't have a route
  */
 
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import React from "react";
+import { FormattedMessage } from "react-intl";
 
-import { Container } from 'react-bootstrap';
+import { Container } from "react-bootstrap";
 
-import styles from './styles/style.scss';
+import styles from "./styles/style.scss";
 
-import messages from './messages';
+import messages from "./messages";
 
 export default function NotFound() {
   return (

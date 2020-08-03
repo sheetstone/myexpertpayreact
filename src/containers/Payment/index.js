@@ -1,20 +1,20 @@
 /*
  * Payment List
  */
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
-import { Container, Button } from 'react-bootstrap';
-import LoadingIndicator from 'components/LoadingIndicator';
-import DataPicker from 'components/DataPicker';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { FormattedMessage } from "react-intl";
+import { Container, Button } from "react-bootstrap";
+import LoadingIndicator from "components/LoadingIndicator";
+import DataPicker from "components/DataPicker";
 
-import { getPayments } from 'api/paymentApi';
-import moment from 'moment';
+import { getPayments } from "api/paymentApi";
+import moment from "moment";
 
-import PaymentList from './component/PaymentList';
+import PaymentList from "./component/PaymentList";
 
-import style from './styles/style.scss';
-import messages from './messages';
+import style from "./styles/style.scss";
+import messages from "./messages";
 
 class Payment extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Payment extends React.Component {
     this.state = {
       paymentData: [],
       isLoading: true,
-      startDate: moment().subtract(1, 'months'),
+      startDate: moment().subtract(1, "months"),
       endDate: moment(),
     };
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -44,10 +44,10 @@ class Payment extends React.Component {
   }
 
   handleDateChange(val, name) {
-    if (name === "startData"){
-     this.setState({startDate: val});
-    }else{
-      this.setState({endDate: val});
+    if (name === "startData") {
+      this.setState({ startDate: val });
+    } else {
+      this.setState({ endDate: val });
     }
   }
 
@@ -65,8 +65,20 @@ class Payment extends React.Component {
             <FormattedMessage {...messages.header} />
           </h1>
           <hr />
-          <DataPicker name="startData" label="Start Date" id="startDate" value={this.state.startDate} onValueChange={this.handleDateChange}/>
-          <DataPicker name="endDate" label="End Date" id="endDate" value={this.state.endDate} onValueChange={this.handleDateChange}/>
+          <DataPicker
+            name="startData"
+            label="Start Date"
+            id="startDate"
+            value={this.state.startDate}
+            onValueChange={this.handleDateChange}
+          />
+          <DataPicker
+            name="endDate"
+            label="End Date"
+            id="endDate"
+            value={this.state.endDate}
+            onValueChange={this.handleDateChange}
+          />
 
           <Button variant="primary" size="md">
             Send Money

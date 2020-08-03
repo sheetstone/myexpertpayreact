@@ -1,11 +1,10 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import React from "react";
+import { FormattedMessage } from "react-intl";
 
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row } from "react-bootstrap";
 
-import messages from './messages';
-import classes from './Footer.module.scss';
-
+import messages from "./messages";
+import classes from "./Footer.module.scss";
 
 function Footer() {
   return (
@@ -15,19 +14,25 @@ function Footer() {
           <section className={classes.Text}>
             <FormattedMessage {...messages.licenseMessage} />
           </section>
-          <section>
-            {/*<LocaleToggle />*/}
-          </section>
+          <section>{/*<LocaleToggle />*/}</section>
           <section className={classes.Text}>
             <FormattedMessage
               {...messages.authorMessage}
               values={{
-                author: <a href="https://www.google.com/search?q=sheetstone">Hong Zhang</a>
+                author: (
+                  <a href="https://www.google.com/search?q=sheetstone">
+                    Hong Zhang
+                  </a>
+                ),
               }}
             />
             <br />
             <span>
-              <FormattedMessage {...messages.contactInfoTel} /> | <a href="mailto:'{contactInfo.email}'">  <FormattedMessage {...messages.contactInfoEmail} /> </a>
+              <FormattedMessage {...messages.contactInfoTel} /> |{" "}
+              <a href="mailto:'{contactInfo.email}'">
+                {" "}
+                <FormattedMessage {...messages.contactInfoEmail} />{" "}
+              </a>
             </span>
           </section>
         </Row>

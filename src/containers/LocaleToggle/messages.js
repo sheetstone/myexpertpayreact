@@ -3,17 +3,17 @@
  *
  * This contains all the text for the LanguageToggle component.
  */
-import { defineMessages } from 'react-intl';
+import { defineMessages } from "react-intl";
 
-export const scope = 'myexpertpay.containers.LocaleToggle';
+export const scope = "myexpertpay.containers.LocaleToggle";
 
 export default defineMessages({
   en: {
     id: `${scope}.en`,
-    defaultMessage: 'en',
+    defaultMessage: "en",
   },
   de: {
     id: `${scope}.de`,
-    defaultMessage: 'de',
+    defaultMessage: "de",
   },
 });

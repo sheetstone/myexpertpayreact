@@ -4,13 +4,13 @@
  * This is the first thing users see of our App, at the '/' route
  */
 
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Container } from 'react-bootstrap';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { Container } from "react-bootstrap";
 
-import classes from './Homepage.module.scss';
-import Welcome from './Welcome'
-import TabList from './TabList/tabList';
+import classes from "./Homepage.module.scss";
+import Welcome from "./Welcome";
+import TabList from "./TabList/tabList";
 
 export default function HomePage() {
   return (

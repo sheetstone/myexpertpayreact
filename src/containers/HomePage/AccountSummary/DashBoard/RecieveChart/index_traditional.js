@@ -1,31 +1,31 @@
-import React from 'react';
+import React from "react";
 
-import style from './styles/style.scss';
+import style from "./styles/style.scss";
 
 // traditional HTML 5 solution backup
 const recievedmoney = [
   {
-    name: 'David Doe',
+    name: "David Doe",
     amount: 134.22,
   },
   {
-    name: 'Steve Sailor',
+    name: "Steve Sailor",
     amount: 400.33,
   },
   {
-    name: 'John Joe',
+    name: "John Joe",
     amount: 300.22,
   },
 ];
 
 const colorScheme = [
-  '#000000',
-  '#b2a0bb',
-  '#ddc2ba',
-  '#72bfb3',
-  '#3C8F80',
-  '#E6B68A',
-  '#E68AA0',
+  "#000000",
+  "#b2a0bb",
+  "#ddc2ba",
+  "#72bfb3",
+  "#3C8F80",
+  "#E6B68A",
+  "#E68AA0",
 ];
 
 class RecieveChart extends React.Component {
@@ -40,7 +40,7 @@ class RecieveChart extends React.Component {
 
   drawPieChart() {
     const canvas = this.dashBoardChart.current;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     const centerX = canvas.width / 2;
     const centerY = 200;
     const radius1 = 70;
@@ -56,11 +56,11 @@ class RecieveChart extends React.Component {
         radius2,
         stoppoint[i - 1] * 2 * Math.PI - (1 / 2) * Math.PI,
         stoppoint[i] * 2 * Math.PI - (1 / 2) * Math.PI,
-        colorScheme[i],
+        colorScheme[i]
       );
     }
 
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = "#ffffff";
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius1, 0, 2 * Math.PI, false);
     ctx.fill();
@@ -69,12 +69,12 @@ class RecieveChart extends React.Component {
   getPercentage() {
     const percent = [0];
     let sum = 0;
-    recievedmoney.forEach(item => {
+    recievedmoney.forEach((item) => {
       sum += item.amount;
     });
 
     let sumper = 0;
-    recievedmoney.forEach(item => {
+    recievedmoney.forEach((item) => {
       sumper += item.amount / sum;
       percent.push(sumper);
     });

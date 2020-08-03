@@ -1,11 +1,11 @@
 // Import Bootstrap and its default variables
-@import 'variables';
+@import "variables";
 
-@import '~bootstrap/scss/bootstrap.scss';
+@import "~bootstrap/scss/bootstrap.scss";
 
 body {
-    margin: 0;
-    font-family: $primary-font;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: $primary-font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

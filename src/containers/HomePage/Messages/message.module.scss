@@ -6,7 +6,7 @@
 .messageTable {
   thead th {
     border-top: none 0;
-    border-bottom: 2px solid rgba(39, 155, 139, .65);
+    border-bottom: 2px solid rgba(39, 155, 139, 0.65);
   }
   td {
     border-top: 0 none;
@@ -14,16 +14,16 @@
     vertical-align: middle;
   }
   button {
-    margin-right:1em;
+    margin-right: 1em;
     color: white;
   }
 }
-.price{
+.price {
   font-size: 1.25em;
   font-weight: 300;
   text-align: right;
 }
-.priceNumber{
+.priceNumber {
   display: inline-block;
   margin-left: 0.25em;
 }

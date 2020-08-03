@@ -1,14 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-
-import './globalStyle/custom.scss';
-import App from './containers/App.js';
-import LanguageProvider from './translations/LanguageProvider';
-import { BrowserRouter as Router } from 'react-router-dom';
-import * as serviceWorker from './serviceWorker';
-
-
+import "./globalStyle/custom.scss";
+import App from "./containers/App.js";
+import LanguageProvider from "./translations/LanguageProvider";
+import { BrowserRouter as Router } from "react-router-dom";
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <LanguageProvider>
@@ -16,7 +13,7 @@ ReactDOM.render(
       <App />
     </Router>
   </LanguageProvider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

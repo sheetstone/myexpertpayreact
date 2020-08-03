@@ -1,13 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheckCircle,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
 
-import classes from './welcome.module.scss';
+import classes from "./welcome.module.scss";
 
 const user = {
   // TODO: Get from redux
-  username: 'John Joe',
+  username: "John Joe",
 };
 
 const bank = {
@@ -17,8 +20,10 @@ const bank = {
 };
 
 function iconCheck() {
-  const successfulIcon = (<FontAwesomeIcon icon={faCheckCircle} color='#279C8B' />);
-  const failedIcon = (<FontAwesomeIcon icon={faTimesCircle} color='#ffcc99' />);
+  const successfulIcon = (
+    <FontAwesomeIcon icon={faCheckCircle} color="#279C8B" />
+  );
+  const failedIcon = <FontAwesomeIcon icon={faTimesCircle} color="#ffcc99" />;
   if (bank.status) {
     return successfulIcon;
   }
@@ -31,11 +36,12 @@ function Welcome() {
       <h2 className={classes.Title}>Welcome, {user.username}</h2>
       <div className={classes.Info}>
         <span>
-          {iconCheck()} &nbsp; Status:{bank.status ? 'Verified' : 'Pending'}
+          {iconCheck()} &nbsp; Status:{bank.status ? "Verified" : "Pending"}
         </span>
         <span>|</span>
         <span>
-          Bank accounts number:&nbsp;<Link to="/bankaccount">{bank.number}</Link>
+          Bank accounts number:&nbsp;
+          <Link to="/bankaccount">{bank.number}</Link>
         </span>
       </div>
     </section>
@@ -43,5 +49,3 @@ function Welcome() {
 }
 
 export default Welcome;
-
-

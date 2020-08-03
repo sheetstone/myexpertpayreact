@@ -3,24 +3,21 @@
  *
  * List all the features
  */
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { FormattedMessage } from "react-intl";
 
-import messages from './messages';
-import List from './List';
-import ListItem from './ListItem';
-import ListItemTitle from './ListItemTitle';
+import messages from "./messages";
+import List from "./List";
+import ListItem from "./ListItem";
+import ListItemTitle from "./ListItemTitle";
 
 export default function FeaturePage() {
   return (
     <div>
       <Helmet>
         <title>Feature Page</title>
-        <meta
-          name="description"
-          content="My Expertpay"
-        />
+        <meta name="description" content="My Expertpay" />
       </Helmet>
       <h1>
         <FormattedMessage {...messages.header} />

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
+import React from "react";
+import { Container } from "react-bootstrap";
 
-import style from './styles/style.scss';
+import style from "./styles/style.scss";
 
 class Block extends React.Component {
   constructor(props) {
@@ -14,10 +14,15 @@ class Block extends React.Component {
   }
 
   setonoff() {
-    return (this.props.onoff) ? style.yellow : '';
+    return this.props.onoff ? style.yellow : "";
   }
   render() {
-    return <div className={style.block + " " + this.setonoff()} onClick={this.clickhandler} />;
+    return (
+      <div
+        className={style.block + " " + this.setonoff()}
+        onClick={this.clickhandler}
+      />
+    );
   }
 }
 
@@ -26,16 +31,17 @@ class Lightout extends React.Component {
     super(props);
     this.statusChange = this.statusChange.bind(this);
     this.state = {
-      matrix: [[true, true, true, true, true],
-      [true, true, true, true, true],
-      [true, true, true, true, true],
-      [true, true, true, true, true],
-      [true, true, true, true, true]],
+      matrix: [
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+      ],
     };
   }
 
   statusChange(row, col) {
-
     let tmp = [...this.state.matrix];
     tmp[row][col] = !tmp[row][col];
     if (row > 0) {
@@ -55,16 +61,20 @@ class Lightout extends React.Component {
   }
 
   getStatus(row, col) {
-    return this.state.matrix[row][col]
+    return this.state.matrix[row][col];
   }
 
   drawCol(rowItem, i) {
-    const colItems = rowItem.map((item, j) => <Block onStatusChange={this.statusChange} onoff={this.getStatus(i, j)} row={i} col={j} key={i + ":" + j} />)
-    return (
-      <div key={i.toString()}>
-        {colItems}
-      </div>
-    )
+    const colItems = rowItem.map((item, j) => (
+      <Block
+        onStatusChange={this.statusChange}
+        onoff={this.getStatus(i, j)}
+        row={i}
+        col={j}
+        key={i + ":" + j}
+      />
+    ));
+    return <div key={i.toString()}>{colItems}</div>;
   }
 
   render() {

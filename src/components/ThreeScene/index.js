@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import * as THREE from 'three';
+import React, { Component } from "react";
+import * as THREE from "three";
 
 class ThreeScene extends Component {
   componentDidMount() {
@@ -14,12 +14,12 @@ class ThreeScene extends Component {
     this.camera.position.z = 4;
     // ADD RENDERER
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
-    this.renderer.setClearColor('#ffffff');
+    this.renderer.setClearColor("#ffffff");
     this.renderer.setSize(width, height);
     this.mount.appendChild(this.renderer.domElement);
     // ADD CUBE
     const geometry = new THREE.SphereGeometry(1, 4, 5);
-    const material = new THREE.MeshBasicMaterial({ color: '#433F81' });
+    const material = new THREE.MeshBasicMaterial({ color: "#433F81" });
     this.sphere = new THREE.Mesh(geometry, material);
     this.scene.add(this.sphere);
     this.start();
@@ -54,13 +54,12 @@ class ThreeScene extends Component {
   render() {
     return (
       <div
-        style={{ width: '1000px', height: '400px' }}
-        ref={mount => {
+        style={{ width: "1000px", height: "400px" }}
+        ref={(mount) => {
           this.mount = mount;
         }}
       />
     );
   }
-
 }
 export default ThreeScene;

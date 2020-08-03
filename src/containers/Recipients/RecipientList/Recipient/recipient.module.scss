@@ -1,16 +1,16 @@
-@import '../../../../globalStyle/variables';
+@import "../../../../globalStyle/variables";
 
 .Card {
   background: white;
   border-radius: 4px;
   margin-bottom: 1em;
   margin-top: 1em;
-  padding: .5rem .75rem;
+  padding: 0.5rem 0.75rem;
   position: relative;
 }
 
 .Name {
-  color: #4B96AC;
+  color: #4b96ac;
   font-size: 18px;
   width: 100%;
   overflow: hidden;
@@ -26,10 +26,10 @@
 }
 
 .Tel {
-    font-size: 14px;
-    color: #666;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+  font-size: 14px;
+  color: #666;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .labelActive {

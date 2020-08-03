@@ -1,16 +1,16 @@
 /*
  * Bank Account
  */
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
-import { Container } from 'react-bootstrap';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { FormattedMessage } from "react-intl";
+import { Container } from "react-bootstrap";
 
-import BankAccountContextProvider from './bankAccount-context';
-import BankAccountContainer from './bankAcountContainer';
+import BankAccountContextProvider from "./bankAccount-context";
+import BankAccountContainer from "./bankAcountContainer";
 
-import classes from './bankAccount.module.scss';
-import messages from './messages';
+import classes from "./bankAccount.module.scss";
+import messages from "./messages";
 
 const BankAccount = (props) => {
   return (
@@ -34,6 +34,6 @@ const BankAccount = (props) => {
       </BankAccountContextProvider>
     </article>
   );
-}
+};
 
 export default BankAccount;

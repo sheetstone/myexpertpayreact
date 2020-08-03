@@ -1,5 +1,5 @@
 [
-{
+  {
     "id": 1,
     "name": "Braulio Vandervort",
     "amount": "759.45",
@@ -8,8 +8,8 @@
     "casenumber": "DF-12010304",
     "catgory": "Householding",
     "paymentdate": "2020-04-15T05:30:45.563Z"
-},
-{
+  },
+  {
     "id": 2,
     "name": "Frida Huels",
     "amount": "690.43",
@@ -18,8 +18,8 @@
     "casenumber": "12312422322",
     "catgory": "Supplyment",
     "paymentdate": "2020-05-11T08:13:58.622Z"
-},
-{
+  },
+  {
     "id": 3,
     "name": "Gwen Tillman",
     "amount": "12.57",
@@ -28,8 +28,8 @@
     "casenumber": "12312422322",
     "catgory": "Householding",
     "paymentdate": "2019-09-06T07:49:34.974Z"
-},
-{
+  },
+  {
     "id": 4,
     "name": "Isai McLaughlin",
     "amount": "863.79",
@@ -38,8 +38,8 @@
     "casenumber": "PPEW-321312",
     "catgory": "Clothing",
     "paymentdate": "2019-09-21T03:18:19.757Z"
-},
-{
+  },
+  {
     "id": 5,
     "name": "Frida Huels",
     "amount": "477.71",
@@ -48,8 +48,8 @@
     "casenumber": "12SDF-2222",
     "catgory": "Book",
     "paymentdate": "2019-09-24T00:14:39.034Z"
-},
-{
+  },
+  {
     "id": 6,
     "name": "Gwen Tillman",
     "amount": "289.04",
@@ -58,8 +58,8 @@
     "casenumber": "DF-12010304",
     "catgory": "Supplyment",
     "paymentdate": "2019-11-01T13:37:58.953Z"
-},
-{
+  },
+  {
     "id": 7,
     "name": "Rosie Bechtelar",
     "amount": "515.84",
@@ -68,8 +68,8 @@
     "casenumber": "12312422322",
     "catgory": "Book",
     "paymentdate": "2019-08-02T04:29:02.663Z"
-},
-{
+  },
+  {
     "id": 8,
     "name": "Mariam Satterfield",
     "amount": "188.58",
@@ -78,8 +78,8 @@
     "casenumber": "DF-12010304",
     "catgory": "Clothing",
     "paymentdate": "2019-09-24T02:39:01.036Z"
-},
-{
+  },
+  {
     "id": 9,
     "name": "Gwen Tillman",
     "amount": "554.27",
@@ -88,8 +88,8 @@
     "casenumber": "PPEW-321312",
     "catgory": "Food",
     "paymentdate": "2020-01-18T07:19:11.269Z"
-},
-{
+  },
+  {
     "id": 10,
     "name": "Ralph Schoen",
     "amount": "84.60",
@@ -98,8 +98,8 @@
     "casenumber": "PPEW-321312",
     "catgory": "Book",
     "paymentdate": "2019-07-05T17:03:13.038Z"
-},
-{
+  },
+  {
     "id": 11,
     "name": "Mariam Satterfield",
     "amount": "106.82",
@@ -108,8 +108,8 @@
     "casenumber": "12312422322",
     "catgory": "Supplyment",
     "paymentdate": "2019-08-26T10:53:19.410Z"
-},
-{
+  },
+  {
     "id": 12,
     "name": "Braulio Vandervort",
     "amount": "895.18",
@@ -118,8 +118,8 @@
     "casenumber": "12SDF-2222",
     "catgory": "Food",
     "paymentdate": "2019-09-23T22:18:00.008Z"
-},
-{
+  },
+  {
     "id": 13,
     "name": "Braulio Vandervort",
     "amount": "56.35",
@@ -128,8 +128,8 @@
     "casenumber": "12312422322",
     "catgory": "Clothing",
     "paymentdate": "2020-05-03T16:32:16.436Z"
-},
-{
+  },
+  {
     "id": 14,
     "name": "Caden Bins",
     "amount": "428.97",
@@ -138,8 +138,8 @@
     "casenumber": "DF-12010304",
     "catgory": "Food",
     "paymentdate": "2019-09-04T02:40:11.299Z"
-},
-{
+  },
+  {
     "id": 15,
     "name": "Gwen Tillman",
     "amount": "686.04",
@@ -148,8 +148,8 @@
     "casenumber": "DF-12010304",
     "catgory": "Householding",
     "paymentdate": "2020-02-27T08:35:56.849Z"
-},
-{
+  },
+  {
     "id": 16,
     "name": "Frida Huels",
     "amount": "631.30",
@@ -158,8 +158,8 @@
     "casenumber": "12312422322",
     "catgory": "Clothing",
     "paymentdate": "2019-12-24T22:08:33.725Z"
-},
-{
+  },
+  {
     "id": 17,
     "name": "Caden Bins",
     "amount": "56.16",
@@ -168,8 +168,8 @@
     "casenumber": "PPEW-321312",
     "catgory": "Householding",
     "paymentdate": "2020-01-16T12:09:25.185Z"
-},
-{
+  },
+  {
     "id": 18,
     "name": "Gwen Tillman",
     "amount": "265.46",
@@ -178,8 +178,8 @@
     "casenumber": "DF-12010304",
     "catgory": "Householding",
     "paymentdate": "2019-08-02T23:38:50.224Z"
-},
-{
+  },
+  {
     "id": 19,
     "name": "Frida Huels",
     "amount": "98.76",
@@ -188,8 +188,8 @@
     "casenumber": "DF-12010304",
     "catgory": "Supplyment",
     "paymentdate": "2019-10-03T10:25:31.423Z"
-},
-{
+  },
+  {
     "id": 20,
     "name": "Isai McLaughlin",
     "amount": "506.38",
@@ -198,5 +198,5 @@
     "casenumber": "12312422322",
     "catgory": "Supplyment",
     "paymentdate": "2020-06-23T20:47:40.477Z"
-}
+  }
 ]

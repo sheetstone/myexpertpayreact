@@ -1,2 +1,1 @@
-export const baseUrl = 'https://myexpertpay.firebaseio.com/';
-
+export const baseUrl = "https://myexpertpay.firebaseio.com/";

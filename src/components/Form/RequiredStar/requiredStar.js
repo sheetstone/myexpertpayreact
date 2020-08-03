@@ -1,6 +1,10 @@
-import React from 'react';
-import classes from './requiredstar.module.scss';
+import React from "react";
+import classes from "./requiredstar.module.scss";
 
-const RequiredStar = () => <span className={classes.required} aria-label="required">&nbsp; * </span>
+const RequiredStar = () => (
+  <span className={classes.required} aria-label="required">
+    &nbsp; *{" "}
+  </span>
+);
 
-export default RequiredStar
+export default RequiredStar;

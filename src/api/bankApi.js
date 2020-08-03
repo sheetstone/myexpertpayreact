@@ -1,14 +1,14 @@
-import { baseUrl } from './baseUrl';
-import { onSuccess } from './baseApi';
+import { baseUrl } from "./baseUrl";
+import { onSuccess } from "./baseApi";
 // import md5 from 'js-md5';
-import resolveBankName from './resolveBankName';
+import resolveBankName from "./resolveBankName";
 
 export async function getBanks() {
   return get(`banks.json`);
 }
 
 export async function deleteBank(id) {
-  if (id===null||id===''){
+  if (id === null || id === "") {
     return;
   }
   return del(`banks/${id}.json`);
@@ -16,12 +16,12 @@ export async function deleteBank(id) {
 
 export async function addBank(data) {
   let bankData = {};
-  bankData['name'] = await resolveBankName(data.rountingNumber);
-  bankData['type'] = data.accountType;
-  bankData['rountinnum'] = data.rountingNumber;  //TODO: encypet rountinnum with MD5 method
-  bankData['accountnum'] = data.accountNumber;  //TODO: encypet rountinnum with MD5 method
-  bankData['verified'] = false;
-  return post('banks.json', bankData);
+  bankData["name"] = await resolveBankName(data.rountingNumber);
+  bankData["type"] = data.accountType;
+  bankData["rountinnum"] = data.rountingNumber; //TODO: encypet rountinnum with MD5 method
+  bankData["accountnum"] = data.accountNumber; //TODO: encypet rountinnum with MD5 method
+  bankData["verified"] = false;
+  return post("banks.json", bankData);
 }
 
 export async function updateBank(key, data) {
@@ -33,30 +33,31 @@ function get(url) {
 
 function del(url) {
   return fetch(baseUrl + url, {
-    method: 'DELETE'
+    method: "DELETE",
   }).then(onSuccess);
 }
 
 function post(url, data) {
   // Post the wrapped data to server
   return fetch(baseUrl + url, {
-    method: 'POST',
+    method: "POST",
     body: JSON.stringify(data),
     headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
+      "Content-type": "application/json; charset=UTF-8",
+    },
   })
-  .then(onSuccess)
-  .then(json => console.log("Bank API Post", json));
+    .then(onSuccess)
+    .then((json) => console.log("Bank API Post", json));
 }
 
 function patch(url, data) {
   return fetch(baseUrl + url, {
-    method: 'PATCH',
+    method: "PATCH",
     body: JSON.stringify(data),
     headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  }).then(onSuccess)
-  .then(json => console.log("Bank API Patch",json));
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then(onSuccess)
+    .then((json) => console.log("Bank API Patch", json));
 }

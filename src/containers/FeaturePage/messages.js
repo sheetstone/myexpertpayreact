@@ -3,18 +3,18 @@
  *
  * This contains all the text for the FeaturePage component.
  */
-import { defineMessages } from 'react-intl';
+import { defineMessages } from "react-intl";
 
-export const scope = 'myexpertpay.containers.FeaturePage';
+export const scope = "myexpertpay.containers.FeaturePage";
 
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'Features',
+    defaultMessage: "Features",
   },
   scaffoldingHeader: {
     id: `${scope}.scaffolding.header`,
-    defaultMessage: 'Quick scaffolding',
+    defaultMessage: "Quick scaffolding",
   },
   scaffoldingMessage: {
     id: `${scope}.scaffolding.message`,
@@ -23,7 +23,7 @@ export default defineMessages({
   },
   feedbackHeader: {
     id: `${scope}.feedback.header`,
-    defaultMessage: 'Instant feedback',
+    defaultMessage: "Instant feedback",
   },
   feedbackMessage: {
     id: `${scope}.feedback.message`,
@@ -36,7 +36,7 @@ export default defineMessages({
   },
   stateManagementHeader: {
     id: `${scope}.state_management.header`,
-    defaultMessage: 'Predictable state management',
+    defaultMessage: "Predictable state management",
   },
   stateManagementMessages: {
     id: `${scope}.state_management.message`,
@@ -47,7 +47,7 @@ export default defineMessages({
   },
   javascriptHeader: {
     id: `${scope}.javascript.header`,
-    defaultMessage: 'Next generation JavaScript',
+    defaultMessage: "Next generation JavaScript",
   },
   javascriptMessage: {
     id: `${scope}.javascript.message`,
@@ -56,15 +56,15 @@ export default defineMessages({
   },
   cssHeader: {
     id: `${scope}.css.header`,
-    defaultMessage: 'Features',
+    defaultMessage: "Features",
   },
   cssMessage: {
     id: `${scope}.css.message`,
-    defaultMessage: 'Next generation CSS',
+    defaultMessage: "Next generation CSS",
   },
   routingHeader: {
     id: `${scope}.routing.header`,
-    defaultMessage: 'Industry-standard routing',
+    defaultMessage: "Industry-standard routing",
   },
   routingMessage: {
     id: `${scope}.routing.message`,
@@ -77,7 +77,7 @@ export default defineMessages({
   },
   networkHeader: {
     id: `${scope}.network.header`,
-    defaultMessage: 'Offline-first',
+    defaultMessage: "Offline-first",
   },
   networkMessage: {
     id: `${scope}.network.message`,
@@ -89,11 +89,11 @@ export default defineMessages({
   intlHeader: {
     id: `${scope}.internationalization.header`,
     defaultMessage:
-      'Complete i18n Standard Internationalization & Pluralization',
+      "Complete i18n Standard Internationalization & Pluralization",
   },
   intlMessage: {
     id: `${scope}.internationalization.message`,
     defaultMessage:
-      'Scalable apps need to support multiple languages, easily add and support multiple languages with `react-intl`.',
+      "Scalable apps need to support multiple languages, easily add and support multiple languages with `react-intl`.",
   },
 });

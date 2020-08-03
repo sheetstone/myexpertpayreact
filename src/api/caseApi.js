@@ -1,5 +1,5 @@
-import { baseUrl } from './baseUrl';
-import { onSuccess } from './baseApi';
+import { baseUrl } from "./baseUrl";
+import { onSuccess } from "./baseApi";
 // import md5 from 'js-md5';
 
 export async function getCases() {
@@ -7,14 +7,14 @@ export async function getCases() {
 }
 
 export async function deleteCase(id) {
-  if (id===null||id===''){
+  if (id === null || id === "") {
     return;
   }
   return del(`cases/${id}.json`);
 }
 
 export async function addCase(data) {
-  return post('cases.json', data);
+  return post("cases.json", data);
 }
 
 export async function updateCase(key, data) {
@@ -27,30 +27,31 @@ function get(url) {
 
 function del(url) {
   return fetch(baseUrl + url, {
-    method: 'DELETE'
+    method: "DELETE",
   }).then(onSuccess);
 }
 
 function post(url, data) {
   // Post the wrapped data to server
   return fetch(baseUrl + url, {
-    method: 'POST',
+    method: "POST",
     body: JSON.stringify(data),
     headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
+      "Content-type": "application/json; charset=UTF-8",
+    },
   })
-  .then(onSuccess)
-  .then(json => console.log("Case API: Add successful: ", json));
+    .then(onSuccess)
+    .then((json) => console.log("Case API: Add successful: ", json));
 }
 
 function patch(url, data) {
   return fetch(baseUrl + url, {
-    method: 'PATCH',
+    method: "PATCH",
     body: JSON.stringify(data),
     headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  }).then(onSuccess)
-  .then(json => console.log("Case API: Patched successful: ", json));
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then(onSuccess)
+    .then((json) => console.log("Case API: Patched successful: ", json));
 }

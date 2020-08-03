@@ -3,14 +3,14 @@
  *
  * This contains all the text for the FeaturePage component.
  */
-import { defineMessages } from 'react-intl';
+import { defineMessages } from "react-intl";
 
-export const scope = 'myexpertpay.containers.caseinfo';
+export const scope = "myexpertpay.containers.caseinfo";
 
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'Case Info',
+    defaultMessage: "Case Info",
   },
   scaffoldingHeader: {
     id: `${scope}.scaffolding.header`,

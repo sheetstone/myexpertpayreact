@@ -1,10 +1,10 @@
-import React from 'react';
-import { Container, Navbar } from 'react-bootstrap';
+import React from "react";
+import { Container, Navbar } from "react-bootstrap";
 
-import NavList from '../Nav/NavList';
-import NavLogo from '../Nav/NavLogo';
+import NavList from "../Nav/NavList";
+import NavLogo from "../Nav/NavLogo";
 
-import classes from './Header.module.scss';
+import classes from "./Header.module.scss";
 
 const Header = (props) => {
   return (
@@ -23,6 +23,6 @@ const Header = (props) => {
       </Container>
     </header>
   );
-}
+};
 
 export default Header;

@@ -1,15 +1,15 @@
-@import '../../../globalStyle/variables';
+@import "../../../globalStyle/variables";
 
 .bankCard {
   background: white;
   border-radius: 4px;
   margin-bottom: 1em;
-  padding: .5rem .75rem;
+  padding: 0.5rem 0.75rem;
   position: relative;
 }
 
 .bankName {
-  color: #4B96AC;
+  color: #4b96ac;
   font-size: 18px;
   width: 100%;
   overflow: hidden;

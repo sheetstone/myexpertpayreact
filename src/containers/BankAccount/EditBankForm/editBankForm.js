@@ -1,51 +1,45 @@
 /*
  * Add/Edit Bank List
  */
-import React, { useEffect } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers';
-import { Modal, Button, Form, Col } from 'react-bootstrap';
-import { addBank } from 'api/bankApi';
-import validRoutin from 'utils/validRoutin';
-import * as yup from 'yup';
-import messages from '../messages';
+import React, { useEffect } from "react";
+import { FormattedMessage } from "react-intl";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers";
+import { Modal, Button, Form, Col } from "react-bootstrap";
+import { addBank } from "api/bankApi";
+import validRoutin from "utils/validRoutin";
+import * as yup from "yup";
+import messages from "../messages";
 
-import RequiredStar from 'components/Form/RequiredStar/requiredStar';
-import FormValidationError from 'components/Form/formValidationError/formValidationError';
+import RequiredStar from "components/Form/RequiredStar/requiredStar";
+import FormValidationError from "components/Form/formValidationError/formValidationError";
 
-yup.addMethod(yup.string, 'isRounting', validRoutin);
+yup.addMethod(yup.string, "isRounting", validRoutin);
 
 const schema = yup.object().shape({
   rountingNumber: yup
     .string()
-    .required('Rounting Number is required')
-    .test('isRounting', 'Not a valid Rounting Number', validRoutin),
+    .required("Rounting Number is required")
+    .test("isRounting", "Not a valid Rounting Number", validRoutin),
   accountNumber: yup
     .string()
-    .required('Account Number is required')
-    .min(4, 'Account Number is too short')
-    .max(17, 'Account Number is long'),
+    .required("Account Number is required")
+    .min(4, "Account Number is too short")
+    .max(17, "Account Number is long"),
   confirmAccountNumber: yup
     .string()
-    .required('Account Number is required')
-    .min(4, 'Account Number is too short')
-    .max(17, 'Account Number is too long')
-    .test('passwords-match', 'AccountNumber should match', function(value){
+    .required("Account Number is required")
+    .min(4, "Account Number is too short")
+    .max(17, "Account Number is too long")
+    .test("passwords-match", "AccountNumber should match", function (value) {
       return this.parent.accountNumber === value;
     }),
 });
 
 export default function EditBankAccount(props) {
-  const {
-    register,
-    handleSubmit,
-    errors,
-    formState,
-    reset
-  } = useForm({
-    mode: 'onBlur',
-    reValidateMode: 'onChange',
+  const { register, handleSubmit, errors, formState, reset } = useForm({
+    mode: "onBlur",
+    reValidateMode: "onChange",
     resolver: yupResolver(schema),
     criteriaMode: "firstErrorDetected",
     shouldFocusError: true,
@@ -71,10 +65,10 @@ export default function EditBankAccount(props) {
       type: "text",
       name: "confirmAccountNumber",
       ref: register,
-      isValid: formState.touched.confirmAccountNumber &&
-      !errors.confirmAccountNumber,
-      isInvalid: formState.touched.confirmAccountNumber &&
-      errors.confirmAccountNumber,
+      isValid:
+        formState.touched.confirmAccountNumber && !errors.confirmAccountNumber,
+      isInvalid:
+        formState.touched.confirmAccountNumber && errors.confirmAccountNumber,
     },
     accountTypeChecking: {
       inline: true,
@@ -83,7 +77,7 @@ export default function EditBankAccount(props) {
       ref: register,
       id: "accounttype-radio-checking",
       value: "checking",
-      label: "Checking"
+      label: "Checking",
     },
     accountTypeSaving: {
       inline: true,
@@ -92,22 +86,22 @@ export default function EditBankAccount(props) {
       ref: register,
       id: "accounttype-radio-saving",
       value: "saving",
-      label: "Saving"
-    }
-  }
- 
-  const {show} = props;
-  useEffect(()=>{
-    reset({
-      rountinNumber: '',
-      accountNumber: '',
-      confirmAccountNumber: ''
-    });
-  },[show, reset]);
+      label: "Saving",
+    },
+  };
 
-  const onSubmit = data => {
+  const { show } = props;
+  useEffect(() => {
+    reset({
+      rountinNumber: "",
+      accountNumber: "",
+      confirmAccountNumber: "",
+    });
+  }, [show, reset]);
+
+  const onSubmit = (data) => {
     console.log("Submitting:" + JSON.stringify(data));
-    addBank(data).then(res => {
+    addBank(data).then((res) => {
       props.reloadState();
       props.onHide();
     });
@@ -119,7 +113,7 @@ export default function EditBankAccount(props) {
       <Form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
         <Modal.Header closeButton>
           <Modal.Title>
-            <FormattedMessage {...messages.addBankTitle}/>
+            <FormattedMessage {...messages.addBankTitle} />
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -130,8 +124,8 @@ export default function EditBankAccount(props) {
                   <FormattedMessage {...messages.rountingNumber} />
                   <RequiredStar />
                 </Form.Label>
-                <Form.Control {...formElement.rountinNumber}/>
-                <FormValidationError formEle="rountingNumber" errors={errors}/>
+                <Form.Control {...formElement.rountinNumber} />
+                <FormValidationError formEle="rountingNumber" errors={errors} />
               </Form.Group>
             </Col>
           </Form.Row>
@@ -144,7 +138,7 @@ export default function EditBankAccount(props) {
                   <RequiredStar />
                 </Form.Label>
                 <Form.Control {...formElement.accountNumber} />
-                <FormValidationError formEle="accountNumber"  errors={errors} />
+                <FormValidationError formEle="accountNumber" errors={errors} />
               </Form.Group>
             </Col>
             <Col>
@@ -153,12 +147,15 @@ export default function EditBankAccount(props) {
                   <FormattedMessage {...messages.accountNumberConfirmation} />
                   <RequiredStar />
                 </Form.Label>
-                <Form.Control {...formElement.confirmAccountNumber}/>
-                <FormValidationError formEle="confirmAccountNumber"  errors={errors}/>
+                <Form.Control {...formElement.confirmAccountNumber} />
+                <FormValidationError
+                  formEle="confirmAccountNumber"
+                  errors={errors}
+                />
               </Form.Group>
             </Col>
           </Form.Row>
-          
+
           <Form.Row>
             <Col>
               <Form.Check {...formElement.accountTypeChecking} defaultChecked />

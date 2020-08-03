@@ -1,4 +1,4 @@
-@import '../../../globalStyle/variables';
+@import "../../../globalStyle/variables";
 
 .calendar {
   margin: 20px 0;
@@ -57,7 +57,7 @@
   text-align: center;
   font-weight: bold;
   flex-grow: 1;
-  padding: .65rem 0.75rem;
+  padding: 0.65rem 0.75rem;
   color: #333;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -100,22 +100,20 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
-  &:hover{
+  &:hover {
     background: rgba($secondary, 0.6);
     color: white;
   }
-  
-  &.active{
+
+  &.active {
     background: rgba($primary, 0.6);
     color: white;
-  }  
+  }
 
   span {
     margin-left: 0.3em;
     user-select: none;
   }
-
-
 }
 
 .differentMonth {
@@ -134,7 +132,6 @@
     top: 0.5rem;
     right: 0.4rem;
   }
-
 }
 
 .selected {
@@ -152,11 +149,11 @@
   }
 }
 
-// EventDetail 
-.eventDetail{
+// EventDetail
+.eventDetail {
   position: absolute;
-  top:0px;
-  left:0px;
+  top: 0px;
+  left: 0px;
   background: white;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -164,13 +161,13 @@
   box-shadow: 0px 0px 8px #c2c2c2;
   padding: 1rem;
 }
-.eventHeader{
+.eventHeader {
   @extend .eventRow;
 
   font-size: 22px;
   font-weight: 300;
 }
-.eventRow{
+.eventRow {
   display: flex;
   padding: 0.85rem 0.2rem;
   align-items: center;
@@ -181,22 +178,22 @@
   }
 }
 .leftcol {
-  width:40px;
+  width: 40px;
   flex-grow: 0;
   flex-shrink: 0;
   text-align: center;
 }
-.rightcol{
+.rightcol {
   flex-grow: 1;
 }
-.eventsInviter{
+.eventsInviter {
   color: #333;
 }
-.invitmeg{
+.invitmeg {
   color: #999;
   font-size: 0.9em;
 }
-.eventlasting{
+.eventlasting {
   color: #999;
   font-size: 0.9em;
 }
