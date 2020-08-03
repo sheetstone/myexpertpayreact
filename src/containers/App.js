@@ -13,6 +13,7 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from './HomePage/Homepage';
 import BankAccount from 'containers/BankAccount/bankAccount';
 import CaseInfo from 'containers/CaseInfo/caseinfo';
+import Recipients from 'containers/Recipients/recipients';
 //import Payment from 'containers/Payment/Loadable';
 //import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Layout/Header/Header';
@@ -29,8 +30,8 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/bankaccount" component={BankAccount} />
         <Route path="/caseinfo" component={CaseInfo} />
-        {/*<Route path="/caseinfo" component={CaseInfo} />
-        <Route path="/payment" component={Payment} />
+        <Route path="/recipients" component={Recipients} />
+        {/*<Route path="/payment" component={Payment} />
         <Route path="/" component={NotFoundPage} />
         */}
       </Switch>

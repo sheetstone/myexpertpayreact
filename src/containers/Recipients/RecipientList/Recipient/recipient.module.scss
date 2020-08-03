@@ -1,0 +1,43 @@
+@import '../../../../globalStyle/variables';
+
+.Card {
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding: .5rem .75rem;
+  position: relative;
+}
+
+.Name {
+  color: #4B96AC;
+  font-size: 18px;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.Email {
+  font-size: 14px;
+  color: #666;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.Tel {
+    font-size: 14px;
+    color: #666;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.labelActive {
+  font-size: 12px;
+  font-weight: bold;
+  background: $primary;
+  color: white;
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  border-radius: 0.4em;
+}
