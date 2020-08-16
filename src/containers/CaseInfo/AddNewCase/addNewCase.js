@@ -21,28 +21,7 @@ const AddNewCase = (props) => {
     formSettings
   );
 
-  const caseNumber = formCreator(
-    "caseNumber",
-    register,
-    formState,
-    initalState,
-    errors
-  );
-  const ncpName = formCreator(
-    "ncpName",
-    register,
-    formState,
-    initalState,
-    errors
-  );
-  const initalChildrenList = formCreator(
-    "childName",
-    register,
-    formState,
-    initalState,
-    errors
-  );
-
+  const { caseNumber, ncpName, initalChildrenList } = formCreator(register,formState,initalState,errors);
   const [childrenName, setChildrenName] = useState(initalChildrenList);
   const [showSuccess, setShowSuccess] = useState(false);
 
