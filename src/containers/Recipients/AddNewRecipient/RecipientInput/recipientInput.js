@@ -8,6 +8,7 @@ import classes from "../addNewRecipient.module.scss";
 const RecipientInput = React.forwardRef((props, ref) => {
   return (
     <Form.Group controlId={props.name}>
+      <Form.Label>{props.label} <span className={classes.red}>*</span></Form.Label>
       <Form.Control {...props} ref={ref} />
       <FormValidationError formEle={props.name} errors={props.errors} />
     </Form.Group>

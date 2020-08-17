@@ -8,7 +8,7 @@ import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 import { BankAccountContext } from "../bankAccount-context";
 import classes from "./sideDropDown.module.scss";
-import Confirm from "../../Recipients/RecipientList/SideDropDown/node_modules/components/UI/Confirm/Confirm";
+import Confirm from "components/UI/Confirm/Confirm";
 
 const BankPropToggle = React.forwardRef(
   ({ onClick, children, active }, ref) => {

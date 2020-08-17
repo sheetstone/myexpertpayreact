@@ -9,7 +9,7 @@ import { Row, Col, Button, Form } from "react-bootstrap";
 import { addCase, updateCase } from "api/caseApi.js";
 import { formSettings, formCreator } from "./caseForm.js";
 
-import SuccessModal from "./SuccessModal/successModal";
+import SuccessModal from "components/UI/SuccessModal/successModal";
 import CaseInput from "./CaseInput/caseInput";
 import equal from "deep-equal";
 
@@ -98,7 +98,7 @@ const AddNewCase = (props) => {
       childName: "",
     });
     setShowSuccess(false);
-    console.log(formState);
+    // console.log(formState);
   };
 
   const onSubmit = (data) => {
@@ -153,6 +153,8 @@ const AddNewCase = (props) => {
               show={showSuccess}
               noed={gotoCaseInfo}
               yesed={resetForm}
+              title='Case Added Successful'
+              body='Do you want to add more cases?'
             />
           </Form>
         </Col>

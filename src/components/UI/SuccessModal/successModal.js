@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
 const SuccessModal = (props) => {
-  const { show, noed, yesed } = props;
+  const { show, noed, yesed, title, body } = props;
 
   return (
     <Modal show={show} onHide={noed} backdrop="static" keyboard={true}>
       <Modal.Header closeButton>
-        <Modal.Title>Case Added Successful</Modal.Title>
+        <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Do you want to add more cases?</Modal.Body>
+      <Modal.Body>{body}</Modal.Body>
       <Modal.Footer>
         <Button variant="link" onClick={noed}>
           No

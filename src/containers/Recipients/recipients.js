@@ -1,22 +1,23 @@
 /*
  * Case Infor
  */
-import React from "react";
-import { Helmet } from "react-helmet";
-import { Route, Switch } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { Route, Switch } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
 
-import AddNewRecipient from "./AddNewRecipient/addNewRecipient";
-import RecipientList from "./RecipientList/recipientList";
-import classes from "./recipients.module.scss";
+import AddNewRecipient from './AddNewRecipient/addNewRecipient'
+import RecipientList from './RecipientList/recipientList'
+import classes from './recipients.module.scss'
 
-export default function Recipients(props) {
-  const { match } = props;
+export default function Recipients (props) {
+  const { match } = props
+
   return (
     <article className={classes.recipientsbg}>
       <Helmet>
         <title>Recipients</title>
-        <meta name="description" content="My Expertpay" />
+        <meta name='description' content='My Expertpay' />
       </Helmet>
       <Container>
         <Switch>
@@ -32,5 +33,5 @@ export default function Recipients(props) {
         </Switch>
       </Container>
     </article>
-  );
+  )
 }

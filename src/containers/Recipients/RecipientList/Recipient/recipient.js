@@ -5,7 +5,11 @@ import classes from "./recipient.module.scss";
 export default function Recipient(props) {
   const { reciItem } = props;
   const recipientLabel = () => {
-    return <span className={classes.labelActive}>Active</span>;
+    if (reciItem.active){
+      return <span className={classes.labelActive}>Active</span>;
+    }else{
+      return <span className={classes.labelInactive}>Inactive</span>;
+    }
   };
 
   return (

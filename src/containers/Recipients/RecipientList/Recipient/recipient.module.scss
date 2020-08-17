@@ -41,3 +41,8 @@
   padding: 0.2em 0.4em;
   border-radius: 0.4em;
 }
+
+.labelInactive {
+ @extend .labelActive;
+ background: $warning;
+}
