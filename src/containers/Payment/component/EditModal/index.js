@@ -10,7 +10,7 @@ import validRoutin from "utils/validRoutin";
 import * as yup from "yup";
 import messages from "../../messages";
 
-import style from "./styles/style.scss";
+import style from "./style.module.scss";
 
 yup.addMethod(yup.string, "isRounting", validRoutin);
 

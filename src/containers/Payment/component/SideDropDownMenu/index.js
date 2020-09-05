@@ -6,7 +6,7 @@ import { Dropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
-import style from "./styles/style.scss";
+import style from "./styles/style.module.scss";
 
 class BankPropToggle extends React.Component {
   constructor(props, context) {

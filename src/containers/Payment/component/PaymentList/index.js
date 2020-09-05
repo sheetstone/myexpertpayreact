@@ -2,7 +2,7 @@
  * Bank List
  */
 import React from "react";
-import style from "./styles/style.scss";
+import style from "./styles/style.module.scss";
 
 // import bankData from 'resources/data/bankData';
 import PaymentItem from "../PaymentItem";

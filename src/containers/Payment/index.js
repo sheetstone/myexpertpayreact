@@ -5,16 +5,16 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { FormattedMessage } from "react-intl";
 import { Container, Button } from "react-bootstrap";
-import LoadingIndicator from "components/LoadingIndicator";
-import DataPicker from "components/DataPicker";
+import LoadingIndicator from "components/UI/LoadingIndicator/LoadingIndicator";
+import DatePicker from "components/UI/DatePicker/datePicker";
 
 import { getPayments } from "api/paymentApi";
 import moment from "moment";
 
 import PaymentList from "./component/PaymentList";
 
-import style from "./styles/style.scss";
 import messages from "./messages";
+import style from "./payment.module.scss";
 
 class Payment extends React.Component {
   constructor(props) {
@@ -65,14 +65,14 @@ class Payment extends React.Component {
             <FormattedMessage {...messages.header} />
           </h1>
           <hr />
-          <DataPicker
+          <DatePicker
             name="startData"
             label="Start Date"
             id="startDate"
             value={this.state.startDate}
             onValueChange={this.handleDateChange}
           />
-          <DataPicker
+          <DatePicker
             name="endDate"
             label="End Date"
             id="endDate"

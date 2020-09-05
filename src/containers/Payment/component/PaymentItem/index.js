@@ -2,7 +2,7 @@
  * Bank Item
  */
 import React from "react";
-import style from "./styles/style.scss";
+import style from "./style.module.scss";
 import moment from "moment";
 
 function labelActive() {
