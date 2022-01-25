@@ -1,17 +1,17 @@
 /*
- * Bank List
+ * Payment List
  */
 import React from "react";
-import style from "./styles/style.module.scss";
+import classes from "./paymentList.module.scss";
 
-// import bankData from 'resources/data/bankData';
-import PaymentItem from "../PaymentItem";
+import PaymentItem from "../PaymentItem/paymentItem";
 
 export default function PaymentList(props) {
   const { paymentData } = props;
+  console.log(paymentData)
 
   return (
-    <ul className={style.paymentList}>
+    <ul className={classes.paymentList}>
       {paymentData.map((item, i) => (
         <PaymentItem paymentData={item} key={`paymentID${i.toString()}`} />
       ))}

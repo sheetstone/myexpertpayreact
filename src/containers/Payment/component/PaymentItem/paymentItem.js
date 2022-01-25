@@ -1,9 +1,8 @@
 /*
- * Bank Item
+ * Payment Item
  */
 import React from "react";
-import style from "./style.module.scss";
-import moment from "moment";
+import style from "./paymentItem.module.scss";
 
 function labelActive() {
   return <span className={style.labelActive}>Active</span>;
@@ -26,14 +25,14 @@ export default function PaymentItem(props) {
   const { paymentData } = props;
   return (
     <li className={style.paymentItem}>
-      <div className={style.paymentstatus}>{paymentData.paymentdate}</div>
-      <div className={style.paymentname}>{paymentData.name}</div>
-      <div className={style.paymentstatus}>
+      <div className={style.paymentData}>{paymentData.paymentdate}</div>
+      <div className={style.paymentName}>{paymentData.name}</div>
+      <div className={style.paymentStatus}>
         {statusCheck(paymentData.status)}
       </div>
-      <div className={style.paymentcase}>{paymentData.casenumber}</div>
-      <div className={style.paymentcatgory}>{paymentData.catgory}</div>
-      <div className={style.paymentamount}>{paymentData.amount}</div>
+      {/*<div className={style.paymentcase}>{paymentData.casenumber}</div>
+      <div className={style.paymentcatgory}>{paymentData.catgory}</div>*/}
+      <div className={style.paymentAmount}>{paymentData.amount}</div>
     </li>
   );
 }

@@ -14,7 +14,7 @@ import HomePage from "./HomePage/Homepage";
 import BankAccount from "containers/BankAccount/bankAccount";
 import CaseInfo from "containers/CaseInfo/caseinfo";
 import Recipients from "containers/Recipients/recipients";
-import Payment from "containers/Payment/index.js"
+import Payment from "containers/Payment/payment.js"
 //import Payment from 'containers/Payment/Loadable';
 //import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from "components/Layout/Header/Header";

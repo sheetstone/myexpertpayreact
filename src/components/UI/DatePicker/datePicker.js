@@ -6,13 +6,15 @@ import moment from "moment";
 import classes from "./datePicker.module.scss";
 
 const DatePicker = (props) => {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date(props.value));
   const [showCalendar, setShowCalendar] = useState(false);
+  const { name, label, id, value, onValueChange } = props;
+  console.log(name, value)
 
   const onChange = (newDate) => {
     setDate(newDate);
     setShowCalendar(false);
-    // this.props.onValueChange(date, this.props.name);
+    onValueChange(date, this.props.name);
   };
 
   const onFocus = (e) => {
@@ -24,9 +26,6 @@ const DatePicker = (props) => {
       setShowCalendar(false);
     }
   };
-  const { name, label, id, value } = props;
-
-  const newdate = moment(value);
 
   return (
     <div
@@ -38,16 +37,17 @@ const DatePicker = (props) => {
         {label}
       </label>
       <input
-        value={newdate.format("YYYY-MM-DD")}
+        value={moment(date).format("MM-DD-YYYY")}
         className={classes.datepickerinput}
         id={id}
         name={name}
         onFocus={onFocus}
         onBlur={onBlur}
+        onChange={onChange}
       />
       <Calendar
         onChange={onChange}
-        value={new Date(value)}
+        value={date}
         className={showCalendar ? classes.calendar : classes.hide}
       />
     </div>
