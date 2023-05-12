@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../globalStyle/_font.scss","tabList.module.scss","tabList.module.css","../../../globalStyle/_variables.scss"],"names":[],"mappings":"AAAQ,gGAAA;ACER;EACE,0BAAA;ACAF;;ADGA;EACE,iBAAA;ACAF;;ADGA;EACE,cAAA;ACAF;ADCE;EACE,mBAAA;ACCJ;ADEE;EACE,cEKM;ADLV;ADEE;EACE,cEEM;ADFV;;ADIA;EACE,iBAAA;EACA,6BAAA;ACDF","file":"tabList.module.css"}

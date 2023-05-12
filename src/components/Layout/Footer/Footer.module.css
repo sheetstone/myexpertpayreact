@@ -1,0 +1,13 @@
+.footer {
+  background: #797979;
+  width: 100%;
+  padding-bottom: 40px;
+  padding-top: 10px;
+}
+.footer span {
+  color: white;
+  font-size: 0.825em;
+}
+.footer .Text {
+  color: white;
+}/*# sourceMappingURL=Footer.module.css.map */

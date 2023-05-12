@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap");
+.Navbrand {
+  padding-bottom: 15px;
+}
+
+.Navlink {
+  padding-bottom: 15px;
+  position: relative;
+}
+.Navlink::after {
+  position: absolute;
+  width: 100%;
+  content: " ";
+  height: 4px;
+  background: #31a590;
+  left: 0;
+  bottom: 0;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.2s ease-in-out;
+}
+.Navlink:hover::after, .Navlink.active::after {
+  transform: scaleY(1);
+}
+
+.Navspace div {
+  margin-left: 2em;
+}/*# sourceMappingURL=Nav.module.css.map */

@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap");
+.tabList {
+  transform: translateY(1px);
+}
+
+.tabItem {
+  margin-right: 1em;
+}
+
+.tabLink {
+  color: #777777;
+}
+.tabLink svg {
+  margin-right: 0.5em;
+}
+.tabLink:hover {
+  color: #31a590;
+}
+.tabLink.active {
+  color: #31a590;
+}
+
+.tabContent {
+  background: white;
+  border-top: 1px solid #cccccc;
+}/*# sourceMappingURL=tabList.module.css.map */

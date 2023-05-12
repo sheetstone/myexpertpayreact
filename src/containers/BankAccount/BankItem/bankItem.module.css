@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap");
+.bankCard {
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 1em;
+  padding: 0.5rem 0.75rem;
+  position: relative;
+}
+
+.bankName {
+  color: #4b96ac;
+  font-size: 18px;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.bankType {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.bankNum {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.labelActive {
+  font-size: 12px;
+  font-weight: bold;
+  background: #31a590;
+  color: white;
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  border-radius: 0.4em;
+}
+
+.labelVerification {
+  font-size: 12px;
+  font-weight: bold;
+  background: #ffcc99;
+  color: white;
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  border-radius: 0.4em;
+}/*# sourceMappingURL=bankItem.module.css.map */

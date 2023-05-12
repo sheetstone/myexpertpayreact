@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap");
+.Header {
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.Title {
+  font-weight: 300;
+}
+
+.Info {
+  font-weight: 300;
+  color: #666666;
+}
+.Info span {
+  margin-right: 0.5em;
+}/*# sourceMappingURL=welcome.module.css.map */

@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap");
+.Card {
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding: 0.5rem 0.75rem;
+  position: relative;
+}
+
+.Name {
+  color: #4b96ac;
+  font-size: 18px;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.Email {
+  font-size: 14px;
+  color: #666;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.Tel {
+  font-size: 14px;
+  color: #666;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.labelActive, .labelInactive {
+  font-size: 12px;
+  font-weight: bold;
+  background: #31a590;
+  color: white;
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  border-radius: 0.4em;
+}
+
+.labelInactive {
+  background: #ffcc99;
+}/*# sourceMappingURL=recipient.module.css.map */

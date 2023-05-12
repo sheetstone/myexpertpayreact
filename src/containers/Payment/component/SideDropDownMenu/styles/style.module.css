@@ -1,0 +1,47 @@
+.sideMenu {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+}
+
+.menuToggle {
+  background: none;
+  border: 0 none;
+  position: relative;
+}
+.menuToggle:focus {
+  outline: 0 none;
+}
+.menuToggle svg {
+  position: relative;
+  z-index: 1;
+}
+.menuToggle::after {
+  display: block;
+  top: -3px;
+  left: -6px;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  position: absolute;
+  z-index: 0;
+  content: " ";
+  transform-origin: center;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+.menuToggle:hover::after {
+  transform: scale(1);
+  opacity: 1;
+  background: #eee;
+}
+.menuToggle.active::after {
+  transform: scale(1);
+  opacity: 1;
+  background: #dadcdd;
+}
+
+.danger {
+  color: red;
+}/*# sourceMappingURL=style.module.css.map */

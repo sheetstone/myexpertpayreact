@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap");
+.Wrapper {
+  margin: 2em auto;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  text-align: center;
+}
+
+.ErrorIcon {
+  width: 80px;
+  height: 80px;
+  background: #b95b8a;
+  border-radius: 100%;
+  margin: 40px auto;
+  position: relative;
+  z-index: 1;
+}
+.ErrorIcon:after {
+  content: "X";
+  position: absolute;
+  display: block;
+  height: 70px;
+  width: 70px;
+  left: 5px;
+  top: 5px;
+  z-index: 0;
+  font-size: 48px;
+  color: white;
+}/*# sourceMappingURL=ErrorMessage.module.css.map */
